@@ -1,0 +1,88 @@
+/* 
+  Localizable.strings
+  PhishWise
+  
+  Dutch localization strings
+*/
+
+// MARK: - Welcome Screen
+"welcome_title" = "Welkom bij PhishWise";
+"welcome_subtitle" = "Leer phishing pogingen herkennen en bescherm jezelf online";
+"start_learning" = "Begin met Leren";
+"language_settings" = "Taal Instellingen";
+
+// MARK: - Navigation
+"lessons" = "Lessen";
+"quiz" = "Quiz";
+"progress" = "Voortgang";
+"back" = "Terug";
+"next" = "Volgende";
+"finish" = "Voltooien";
+"restart" = "Opnieuw";
+"get_certificate" = "Krijg Certificaat";
+"course_certificate" = "Cursus & Certificaat";
+
+// MARK: - Quiz
+"question_number" = "Vraag %d van %d";
+"is_this_phishing" = "Is dit een phishing poging?";
+"yes" = "Ja";
+"no" = "Nee";
+"correct_answer" = "Correct!";
+"incorrect_answer" = "Incorrect";
+"explanation" = "Uitleg";
+"continue" = "Doorgaan";
+
+// MARK: - Progress
+"quiz_complete" = "Quiz Voltooid!";
+"your_score" = "Jouw Score: %d van %d";
+"percentage" = "%.0f%%";
+"excellent" = "Uitstekend!";
+"good_job" = "Goed gedaan!";
+"keep_learning" = "Blijf leren!";
+"try_again" = "Probeer opnieuw";
+
+// MARK: - Lessons
+"lesson_title" = "Leermodules";
+"lesson_placeholder" = "Hier kun je je leerinhoud toevoegen. Elke les kan tekst, afbeeldingen en interactieve elementen bevatten om gebruikers te helpen phishing technieken te begrijpen.";
+"coming_soon" = "Binnenkort Beschikbaar";
+
+// MARK: - News
+"phishing_news" = "Phishing Nieuws";
+"search_news" = "Zoek nieuws...";
+"clear_search" = "Zoekopdracht wissen";
+"loading_news" = "Nieuws laden...";
+"error_loading_news" = "Fout bij laden nieuws";
+"no_articles_found" = "Geen artikelen gevonden";
+"try_different_search" = "Probeer een andere zoekterm";
+"article" = "Artikel";
+"close" = "Sluiten";
+"share_article" = "Deel artikel";
+"stay_informed" = "Blijf Geïnformeerd";
+"phishing_awareness_tip" = "Houd jezelf op de hoogte van de nieuwste phishing bedreigingen en beschermingsstrategieën.";
+
+// MARK: - Certificate
+"certificate" = "Certificaat";
+"congratulations" = "Gefeliciteerd!";
+"course_completed" = "Cursus Voltooid";
+"enter_name_certificate" = "Voer je naam in voor het certificaat";
+"your_name" = "Je naam";
+"generate_certificate" = "Certificaat Genereren";
+"certificate_completion" = "Certificaat van Voltooiing";
+"phishing_awareness_course" = "Phishing Bewustzijn Cursus";
+"awarded_to" = "Dit certificaat wordt toegekend aan";
+"has_successfully_completed" = "heeft succesvol voltooid";
+"phishing_awareness_training" = "Phishing Bewustzijn Training";
+"with_score" = "met een score van";
+"completion_date" = "Voltooiingsdatum";
+"verification_code" = "Verificatiecode";
+"scan_to_verify" = "Scan deze code om het certificaat te verifiëren";
+"share_certificate" = "Deel Certificaat";
+"new_certificate" = "Nieuw Certificaat";
+
+// MARK: - Accessibility
+"accessibility_language_button" = "Taal wijzigen";
+"accessibility_quiz_button" = "Start quiz";
+"accessibility_lesson_button" = "Bekijk lessen";
+"accessibility_progress_button" = "Bekijk voortgang";
+"accessibility_yes_button" = "Ja, dit is phishing";
+"accessibility_no_button" = "Nee, dit is geen phishing";

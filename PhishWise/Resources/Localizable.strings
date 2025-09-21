@@ -1,0 +1,88 @@
+/* 
+  Localizable.strings
+  PhishWise
+  
+  English localization strings
+*/
+
+// MARK: - Welcome Screen
+"welcome_title" = "Welcome to PhishWise";
+"welcome_subtitle" = "Learn to recognize phishing attempts and protect yourself online";
+"start_learning" = "Start Learning";
+"language_settings" = "Language Settings";
+
+// MARK: - Navigation
+"lessons" = "Lessons";
+"quiz" = "Quiz";
+"progress" = "Progress";
+"back" = "Back";
+"next" = "Next";
+"finish" = "Finish";
+"restart" = "Restart";
+"get_certificate" = "Get Certificate";
+"course_certificate" = "Course & Certificate";
+
+// MARK: - Quiz
+"question_number" = "Question %d of %d";
+"is_this_phishing" = "Is this a phishing attempt?";
+"yes" = "Yes";
+"no" = "No";
+"correct_answer" = "Correct!";
+"incorrect_answer" = "Incorrect";
+"explanation" = "Explanation";
+"continue" = "Continue";
+
+// MARK: - Progress
+"quiz_complete" = "Quiz Complete!";
+"your_score" = "Your Score: %d out of %d";
+"percentage" = "%.0f%%";
+"excellent" = "Excellent!";
+"good_job" = "Good job!";
+"keep_learning" = "Keep learning!";
+"try_again" = "Try again";
+
+// MARK: - Lessons
+"lesson_title" = "Learning Modules";
+"lesson_placeholder" = "This is where you can add your learning content. Each lesson can contain text, images, and interactive elements to help users understand phishing techniques.";
+"coming_soon" = "Coming Soon";
+
+// MARK: - News
+"phishing_news" = "Phishing News";
+"search_news" = "Search news...";
+"clear_search" = "Clear search";
+"loading_news" = "Loading news...";
+"error_loading_news" = "Error loading news";
+"no_articles_found" = "No articles found";
+"try_different_search" = "Try a different search term";
+"article" = "Article";
+"close" = "Close";
+"share_article" = "Share article";
+"stay_informed" = "Stay Informed";
+"phishing_awareness_tip" = "Keep yourself updated with the latest phishing threats and protection strategies.";
+
+// MARK: - Certificate
+"certificate" = "Certificate";
+"congratulations" = "Congratulations!";
+"course_completed" = "Course Completed";
+"enter_name_certificate" = "Enter your name for the certificate";
+"your_name" = "Your name";
+"generate_certificate" = "Generate Certificate";
+"certificate_completion" = "Certificate of Completion";
+"phishing_awareness_course" = "Phishing Awareness Course";
+"awarded_to" = "This certificate is awarded to";
+"has_successfully_completed" = "has successfully completed";
+"phishing_awareness_training" = "Phishing Awareness Training";
+"with_score" = "with a score of";
+"completion_date" = "Completion Date";
+"verification_code" = "Verification Code";
+"scan_to_verify" = "Scan this code to verify the certificate";
+"share_certificate" = "Share Certificate";
+"new_certificate" = "New Certificate";
+
+// MARK: - Accessibility
+"accessibility_language_button" = "Change language";
+"accessibility_quiz_button" = "Start quiz";
+"accessibility_lesson_button" = "View lessons";
+"accessibility_progress_button" = "View progress";
+"accessibility_yes_button" = "Yes, this is phishing";
+"accessibility_no_button" = "No, this is not phishing";
