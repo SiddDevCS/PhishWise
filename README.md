@@ -2,6 +2,10 @@
 
 A Dutch/English Swift-based iOS app designed to help users (specifically elders) learn to recognize phishing attempts through quizzes, and stay updated with the latest phishing news.
 
+<p align="center">
+  <img src="images/logo.png" alt="PhishWijzer Logo" width="200"/>
+</p>
+
 ## App Structure
 
 ```
