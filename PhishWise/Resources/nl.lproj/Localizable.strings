@@ -79,6 +79,18 @@
 "share_certificate" = "Deel Certificaat";
 "new_certificate" = "Nieuw Certificaat";
 
+// MARK: - Settings
+"settings" = "Instellingen";
+"app_info" = "App Informatie";
+"app_version" = "App Versie";
+"supported_languages" = "Ondersteunde Talen";
+"change_language" = "Taal Wijzigen";
+"change" = "Wijzigen";
+"cancel" = "Annuleren";
+"language_change_message" = "Het wijzigen van de taal zal de app opnieuw opstarten om de nieuwe taal toe te passen.";
+"currently_selected" = "Momenteel geselecteerd";
+"tap_to_select" = "Tik om te selecteren";
+
 // MARK: - Accessibility
 "accessibility_language_button" = "Taal wijzigen";
 "accessibility_quiz_button" = "Start quiz";

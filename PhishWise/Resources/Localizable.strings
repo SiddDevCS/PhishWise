@@ -79,6 +79,18 @@
 "share_certificate" = "Share Certificate";
 "new_certificate" = "New Certificate";
 
+// MARK: - Settings
+"settings" = "Settings";
+"app_info" = "App Information";
+"app_version" = "App Version";
+"supported_languages" = "Supported Languages";
+"change_language" = "Change Language";
+"change" = "Change";
+"cancel" = "Cancel";
+"language_change_message" = "Changing the language will restart the app to apply the new language.";
+"currently_selected" = "Currently selected";
+"tap_to_select" = "Tap to select";
+
 // MARK: - Accessibility
 "accessibility_language_button" = "Change language";
 "accessibility_quiz_button" = "Start quiz";

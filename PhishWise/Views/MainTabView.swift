@@ -10,7 +10,7 @@ import SwiftUI
 // MARK: - Main Tab View
 /// Root view with TabView containing News and Course sections
 struct MainTabView: View {
-    @StateObject private var appViewModel = AppViewModel()
+    @EnvironmentObject var appViewModel: AppViewModel
     @State private var selectedTab: TabSelection = .news
     
     var body: some View {
@@ -32,8 +32,16 @@ struct MainTabView: View {
                 }
                 .tag(TabSelection.course)
                 .accessibilityLabel(NSLocalizedString("course_certificate", comment: "Course & Certificate"))
+            
+            // Settings Tab
+            SettingsView(appViewModel: appViewModel)
+                .tabItem {
+                    Image(systemName: "gearshape")
+                    Text(NSLocalizedString("settings", comment: "Settings"))
+                }
+                .tag(TabSelection.settings)
+                .accessibilityLabel(NSLocalizedString("settings", comment: "Settings"))
         }
-        .environmentObject(appViewModel)
         .preferredColorScheme(.light) // Force light mode for high contrast
         .dynamicTypeSize(.large ... .accessibility3) // Support Dynamic Type
     }
@@ -68,4 +76,5 @@ struct CourseTabView: View {
 // MARK: - Preview
 #Preview {
     MainTabView()
+        .environmentObject(AppViewModel())
 }

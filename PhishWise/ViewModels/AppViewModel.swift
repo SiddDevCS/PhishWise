@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: - App View Model
 /// Main view model that manages app state and navigation
 class AppViewModel: ObservableObject {
-    @Published var currentLanguage: Language = .english
+    @Published var currentLanguage: Language = .dutch
     @Published var currentView: AppView = .welcome
     @Published var quizScore: Int = 0
     @Published var totalQuestions: Int = 0
@@ -59,6 +59,30 @@ class AppViewModel: ObservableObject {
         selectedAnswer = nil
         showFeedback = false
     }
+    
+    // MARK: - Language Management
+    func changeLanguage(to language: Language) {
+        currentLanguage = language
+        saveLanguagePreference()
+        
+        // Post notification to update UI
+        NotificationCenter.default.post(name: .languageChanged, object: language)
+    }
+    
+    private func saveLanguagePreference() {
+        UserDefaults.standard.set(currentLanguage.rawValue, forKey: "selectedLanguage")
+    }
+    
+    private func loadLanguagePreference() {
+        if let savedLanguage = UserDefaults.standard.string(forKey: "selectedLanguage"),
+           let language = Language(rawValue: savedLanguage) {
+            currentLanguage = language
+        }
+    }
+    
+    init() {
+        loadLanguagePreference()
+    }
 }
 
 // MARK: - App View Enum
@@ -75,4 +99,10 @@ enum AppView {
 enum TabSelection {
     case news
     case course
+    case settings
+}
+
+// MARK: - Notification Names
+extension Notification.Name {
+    static let languageChanged = Notification.Name("languageChanged")
 }
