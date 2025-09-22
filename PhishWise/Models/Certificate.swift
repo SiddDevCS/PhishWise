@@ -9,7 +9,8 @@ import Foundation
 import SwiftUI
 
 // MARK: - Certificate Model
-/// Represents a course completion certificate
+// Dit is het certificate model, dus hoe het qr-code/pdf/img na het quiz er uit gaat zien
+/// course completion certificate
 struct Certificate: Identifiable {
     let id = UUID()
     let userName: String
@@ -17,20 +18,20 @@ struct Certificate: Identifiable {
     let score: Int
     let totalQuestions: Int
     
-    /// Generates a QR code string for the certificate
+    /// qr-code generatie
     var qrCodeString: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         return "Phishing Course Completed - \(userName) - \(formatter.string(from: completionDate))"
     }
     
-    /// Calculates the percentage score
+    /// percentage van score
     var scorePercentage: Double {
         guard totalQuestions > 0 else { return 0 }
         return Double(score) / Double(totalQuestions) * 100
     }
     
-    /// Returns a formatted completion date
+    /// datum
     var formattedDate: String {
         let formatter = DateFormatter()
         formatter.dateStyle = .full
