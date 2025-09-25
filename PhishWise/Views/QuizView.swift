@@ -68,13 +68,13 @@ struct QuizView: View {
                             VStack(spacing: 24) {
                                 // Question Header
                                 VStack(spacing: 16) {
-                                    Text(String(format: NSLocalizedString("question_number", comment: "Question number"), 
+                                    Text(String(format: "question_number".localized, 
                                               quizVM.currentQuestionIndex + 1, 
                                               quizVM.totalQuestions))
                                         .font(.headline)
                                         .foregroundColor(.secondary)
                                     
-                        Text(NSLocalizedString("is_this_phishing", comment: "Is this phishing"))
+                        Text("is_this_phishing".localized)
                             .font(.title2)
                             .fontWeight(.bold)
                             .multilineTextAlignment(.center)
@@ -102,7 +102,7 @@ struct QuizView: View {
                                             HStack {
                                                 Image(systemName: "checkmark.circle.fill")
                                                     .font(.title2)
-                                                Text(NSLocalizedString("yes", comment: "Yes"))
+                                                Text("yes".localized)
                                                     .font(.title2)
                                                     .fontWeight(.semibold)
                                                 Spacer()
@@ -112,7 +112,7 @@ struct QuizView: View {
                                             .background(Color.red)
                                             .cornerRadius(12)
                                         }
-                                        .accessibilityLabel(NSLocalizedString("accessibility_yes_button", comment: "Yes button accessibility"))
+                                        .accessibilityLabel("accessibility_yes_button".localized)
                                         
                                         Button(action: {
                                             quizVM.selectAnswer(false)
@@ -121,7 +121,7 @@ struct QuizView: View {
                                             HStack {
                                                 Image(systemName: "xmark.circle.fill")
                                                     .font(.title2)
-                                                Text(NSLocalizedString("no", comment: "No"))
+                                                Text("no".localized)
                                                     .font(.title2)
                                                     .fontWeight(.semibold)
                                                 Spacer()
@@ -131,7 +131,7 @@ struct QuizView: View {
                                             .background(Color.green)
                                             .cornerRadius(12)
                                         }
-                                        .accessibilityLabel(NSLocalizedString("accessibility_no_button", comment: "No button accessibility"))
+                                        .accessibilityLabel("accessibility_no_button".localized)
                                     }
                                 }
                                 .padding(.horizontal)
@@ -142,11 +142,11 @@ struct QuizView: View {
                     }
                 }
             }
-            .navigationTitle(NSLocalizedString("quiz", comment: "Quiz"))
+            .navigationTitle("quiz".localized)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(NSLocalizedString("back", comment: "Back")) {
+                    Button("back".localized) {
                         appViewModel.navigateTo(.welcome)
                     }
                 }
@@ -191,13 +191,13 @@ struct QuizCompleteView: View {
     var performanceMessage: String {
         switch scorePercentage {
         case 90...100:
-            return NSLocalizedString("excellent", comment: "Excellent")
+            return "excellent".localized
         case 70..<90:
-            return NSLocalizedString("good_job", comment: "Good job")
+            return "good_job".localized
         case 50..<70:
-            return NSLocalizedString("keep_learning", comment: "Keep learning")
+            return "keep_learning".localized
         default:
-            return NSLocalizedString("try_again", comment: "Try again")
+            return "try_again".localized
         }
     }
     
@@ -213,7 +213,7 @@ struct QuizCompleteView: View {
             
             // Results
             VStack(spacing: 16) {
-                Text(NSLocalizedString("quiz_complete", comment: "Quiz complete"))
+                Text("quiz_complete".localized)
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
@@ -224,13 +224,13 @@ struct QuizCompleteView: View {
                     .fontWeight(.semibold)
                     .foregroundColor(.green)
                 
-                Text(String(format: NSLocalizedString("your_score", comment: "Your score"), 
+                Text(String(format: "your_score".localized, 
                           quizViewModel.score, 
                           quizViewModel.totalQuestions))
                     .font(.title3)
                     .foregroundColor(.secondary)
                 
-                Text(String(format: NSLocalizedString("percentage", comment: "Percentage"), scorePercentage))
+                Text(String(format: "percentage".localized, scorePercentage))
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(.blue)
@@ -243,7 +243,7 @@ struct QuizCompleteView: View {
                 Button(action: {
                     appViewModel.navigateTo(.certificate)
                 }) {
-                    Text(NSLocalizedString("get_certificate", comment: "Get Certificate"))
+                    Text("get_certificate".localized)
                         .font(.title2)
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
@@ -256,7 +256,7 @@ struct QuizCompleteView: View {
                 Button(action: {
                     quizViewModel.resetQuiz()
                 }) {
-                    Text(NSLocalizedString("restart", comment: "Restart"))
+                    Text("restart".localized)
                         .font(.title2)
                         .fontWeight(.semibold)
                         .foregroundColor(.blue)

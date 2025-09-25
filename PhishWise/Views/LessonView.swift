@@ -23,7 +23,7 @@ struct LessonView: View {
                             .foregroundColor(.green)
                             .accessibilityLabel("Learning Icon")
                         
-                        Text(NSLocalizedString("lesson_title", comment: "Lesson title"))
+                        Text("lesson_title".localized)
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .multilineTextAlignment(.center)
@@ -70,11 +70,11 @@ struct LessonView: View {
                     Spacer(minLength: 100)
                 }
             }
-            .navigationTitle(NSLocalizedString("lessons", comment: "Lessons"))
+            .navigationTitle("lessons".localized)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(NSLocalizedString("back", comment: "Back")) {
+                    Button("back".localized) {
                         appViewModel.navigateTo(.welcome)
                     }
                 }
@@ -126,13 +126,13 @@ struct LessonCard: View {
             // Card Content
             if isExpanded {
                 VStack(alignment: .leading, spacing: 12) {
-                    Text(NSLocalizedString("lesson_placeholder", comment: "Lesson placeholder"))
+                    Text("lesson_placeholder".localized)
                         .font(.body)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.leading)
                     
                     // Placeholder for future content
-                    Text(NSLocalizedString("coming_soon", comment: "Coming soon"))
+                    Text("coming_soon".localized)
                         .font(.caption)
                         .fontWeight(.medium)
                         .foregroundColor(color)

@@ -19,28 +19,28 @@ struct MainTabView: View {
             NewsListView(appViewModel: appViewModel)
                 .tabItem {
                     Image(systemName: "newspaper")
-                    Text(NSLocalizedString("phishing_news", comment: "Phishing news"))
+                    Text("phishing_news".localized)
                 }
                 .tag(TabSelection.news)
-                .accessibilityLabel(NSLocalizedString("phishing_news", comment: "Phishing news"))
+                .accessibilityLabel("phishing_news".localized)
             
             // Course Tab
             CourseTabView(appViewModel: appViewModel)
                 .tabItem {
                     Image(systemName: "graduationcap")
-                    Text(NSLocalizedString("course_certificate", comment: "Course & Certificate"))
+                    Text("course_certificate".localized)
                 }
                 .tag(TabSelection.course)
-                .accessibilityLabel(NSLocalizedString("course_certificate", comment: "Course & Certificate"))
+                .accessibilityLabel("course_certificate".localized)
             
             // Settings Tab
             SettingsView(appViewModel: appViewModel)
                 .tabItem {
                     Image(systemName: "gearshape")
-                    Text(NSLocalizedString("settings", comment: "Settings"))
+                    Text("settings".localized)
                 }
                 .tag(TabSelection.settings)
-                .accessibilityLabel(NSLocalizedString("settings", comment: "Settings"))
+                .accessibilityLabel("settings".localized)
         }
         .preferredColorScheme(.light) // Force light mode for high contrast
         .dynamicTypeSize(.large ... .accessibility3) // Support Dynamic Type

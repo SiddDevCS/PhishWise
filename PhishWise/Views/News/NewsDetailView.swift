@@ -62,11 +62,11 @@ struct NewsDetailView: View {
                     VStack(spacing: 12) {
                         Divider()
                         
-                        Text(NSLocalizedString("stay_informed", comment: "Stay informed"))
+                        Text("stay_informed".localized)
                             .font(.headline)
                             .fontWeight(.semibold)
                         
-                        Text(NSLocalizedString("phishing_awareness_tip", comment: "Phishing awareness tip"))
+                        Text("phishing_awareness_tip".localized)
                             .font(.body)
                             .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)
@@ -79,11 +79,11 @@ struct NewsDetailView: View {
                     Spacer(minLength: 50)
                 }
             }
-            .navigationTitle(NSLocalizedString("article", comment: "Article"))
+            .navigationTitle("article".localized)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(NSLocalizedString("close", comment: "Close")) {
+                    Button("close".localized) {
                         dismiss()
                         onDismiss()
                     }
@@ -95,7 +95,7 @@ struct NewsDetailView: View {
                     }) {
                         Image(systemName: "square.and.arrow.up")
                     }
-                    .accessibilityLabel(NSLocalizedString("share_article", comment: "Share article"))
+                    .accessibilityLabel("share_article".localized)
                 }
             }
         }

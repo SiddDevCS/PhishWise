@@ -24,7 +24,7 @@ struct PhishWiseProgressView: View {
                             .foregroundColor(.blue)
                             .accessibilityLabel("Progress Icon")
                         
-                        Text(NSLocalizedString("progress", comment: "Progress"))
+                        Text("progress".localized)
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .multilineTextAlignment(.center)
@@ -83,7 +83,7 @@ struct PhishWiseProgressView: View {
                             HStack {
                                 Image(systemName: "arrow.clockwise")
                                     .font(.title2)
-                                Text(NSLocalizedString("restart", comment: "Restart"))
+                                Text("restart".localized)
                                     .font(.title2)
                                     .fontWeight(.semibold)
                             }
@@ -93,7 +93,7 @@ struct PhishWiseProgressView: View {
                             .background(Color.blue)
                             .cornerRadius(12)
                         }
-                        .accessibilityLabel(NSLocalizedString("accessibility_quiz_button", comment: "Quiz button accessibility"))
+                        .accessibilityLabel("accessibility_quiz_button".localized)
                         
                         Button(action: {
                             appViewModel.navigateTo(.lessons)
@@ -101,7 +101,7 @@ struct PhishWiseProgressView: View {
                             HStack {
                                 Image(systemName: "book.fill")
                                     .font(.title2)
-                                Text(NSLocalizedString("lessons", comment: "Lessons"))
+                                Text("lessons".localized)
                                     .font(.title2)
                                     .fontWeight(.semibold)
                             }
@@ -111,18 +111,18 @@ struct PhishWiseProgressView: View {
                             .background(Color.blue.opacity(0.1))
                             .cornerRadius(12)
                         }
-                        .accessibilityLabel(NSLocalizedString("accessibility_lesson_button", comment: "Lesson button accessibility"))
+                        .accessibilityLabel("accessibility_lesson_button".localized)
                     }
                     .padding(.horizontal)
                     
                     Spacer(minLength: 50)
                 }
             }
-            .navigationTitle(NSLocalizedString("progress", comment: "Progress"))
+            .navigationTitle("progress".localized)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(NSLocalizedString("back", comment: "Back")) {
+                    Button("back".localized) {
                         appViewModel.navigateTo(.welcome)
                     }
                 }

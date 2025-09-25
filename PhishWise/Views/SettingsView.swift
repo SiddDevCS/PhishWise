@@ -17,14 +17,14 @@ struct SettingsView: View {
         NavigationView {
             List {
                 // Language Section
-                Section(header: Text(NSLocalizedString("language_settings", comment: "Language Settings"))) {
+                Section(header: Text("language_settings".localized)) {
                     ForEach(Language.allCases, id: \.self) { language in
                         LanguageRow(
                             language: language,
                             isSelected: appViewModel.currentLanguage == language,
                             onTap: {
                                 if language != appViewModel.currentLanguage {
-                                    showingLanguageAlert = true
+                                    appViewModel.changeLanguage(to: language)
                                 }
                             }
                         )
@@ -32,11 +32,11 @@ struct SettingsView: View {
                 }
                 
                 // App Info Section
-                Section(header: Text(NSLocalizedString("app_info", comment: "App Information"))) {
+                Section(header: Text("app_info".localized)) {
                     HStack {
                         Image(systemName: "info.circle")
                             .foregroundColor(.blue)
-                        Text(NSLocalizedString("app_version", comment: "App Version"))
+                        Text("app_version".localized)
                         Spacer()
                         Text("1.0.0")
                             .foregroundColor(.secondary)
@@ -45,28 +45,17 @@ struct SettingsView: View {
                     HStack {
                         Image(systemName: "globe")
                             .foregroundColor(.green)
-                        Text(NSLocalizedString("supported_languages", comment: "Supported Languages"))
+                        Text("supported_languages".localized)
                         Spacer()
                         Text("English, Nederlands")
                             .foregroundColor(.secondary)
                     }
                 }
             }
-            .navigationTitle(NSLocalizedString("settings", comment: "Settings"))
+            .navigationTitle("settings".localized)
             .navigationBarTitleDisplayMode(.large)
-            .alert(NSLocalizedString("change_language", comment: "Change Language"), isPresented: $showingLanguageAlert) {
-                Button(NSLocalizedString("cancel", comment: "Cancel"), role: .cancel) { }
-                Button(NSLocalizedString("change", comment: "Change")) {
-                    // Find the selected language
-                    if let selectedLanguage = Language.allCases.first(where: { $0 != appViewModel.currentLanguage }) {
-                        appViewModel.changeLanguage(to: selectedLanguage)
-                    }
-                }
-            } message: {
-                Text(NSLocalizedString("language_change_message", comment: "Changing the language will restart the app to apply the new language."))
-            }
         }
-        .accessibilityLabel(NSLocalizedString("settings", comment: "Settings"))
+        .accessibilityLabel("settings".localized)
     }
 }
 
@@ -105,7 +94,7 @@ struct LanguageRow: View {
         }
         .buttonStyle(PlainButtonStyle())
         .accessibilityLabel("\(language.displayName) \(isSelected ? "selected" : "not selected")")
-        .accessibilityHint(isSelected ? NSLocalizedString("currently_selected", comment: "Currently selected") : NSLocalizedString("tap_to_select", comment: "Tap to select"))
+        .accessibilityHint(isSelected ? "currently_selected".localized : "tap_to_select".localized)
     }
 }
 

@@ -24,9 +24,9 @@ struct NewsListView: View {
                         Image(systemName: "magnifyingglass")
                             .foregroundColor(.secondary)
                         
-                        TextField(NSLocalizedString("search_news", comment: "Search news"), text: $newsViewModel.searchText)
+                        TextField("search_news".localized, text: $newsViewModel.searchText)
                             .textFieldStyle(PlainTextFieldStyle())
-                            .accessibilityLabel(NSLocalizedString("search_news", comment: "Search news"))
+                            .accessibilityLabel("search_news".localized)
                         
                         if !newsViewModel.searchText.isEmpty {
                             Button(action: {
@@ -35,7 +35,7 @@ struct NewsListView: View {
                                 Image(systemName: "xmark.circle.fill")
                                     .foregroundColor(.secondary)
                             }
-                            .accessibilityLabel(NSLocalizedString("clear_search", comment: "Clear search"))
+                            .accessibilityLabel("clear_search".localized)
                         }
                     }
                     .padding()
@@ -73,7 +73,7 @@ struct NewsListView: View {
                     VStack(spacing: 20) {
                         ProgressView()
                             .scaleEffect(1.5)
-                        Text(NSLocalizedString("loading_news", comment: "Loading news"))
+                        Text("loading_news".localized)
                             .font(.headline)
                             .foregroundColor(.secondary)
                     }
@@ -84,13 +84,13 @@ struct NewsListView: View {
                         Image(systemName: "exclamationmark.triangle.fill")
                             .font(.system(size: 50))
                             .foregroundColor(.red)
-                        Text(NSLocalizedString("error_loading_news", comment: "Error loading news"))
+                        Text("error_loading_news".localized)
                             .font(.headline)
                         Text(error)
                             .font(.body)
                             .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)
-                        Button(NSLocalizedString("try_again", comment: "Try again")) {
+                        Button("try_again".localized) {
                             newsViewModel.refreshArticles()
                         }
                         .buttonStyle(.borderedProminent)
@@ -103,10 +103,10 @@ struct NewsListView: View {
                         Image(systemName: "newspaper")
                             .font(.system(size: 50))
                             .foregroundColor(.secondary)
-                        Text(NSLocalizedString("no_articles_found", comment: "No articles found"))
+                        Text("no_articles_found".localized)
                             .font(.headline)
                             .foregroundColor(.secondary)
-                        Text(NSLocalizedString("try_different_search", comment: "Try different search"))
+                        Text("try_different_search".localized)
                             .font(.body)
                             .foregroundColor(.secondary)
                     }
@@ -129,7 +129,7 @@ struct NewsListView: View {
                     }
                 }
             }
-            .navigationTitle(NSLocalizedString("phishing_news", comment: "Phishing news"))
+            .navigationTitle("phishing_news".localized)
             .navigationBarTitleDisplayMode(.large)
             .refreshable {
                 newsViewModel.refreshArticles()

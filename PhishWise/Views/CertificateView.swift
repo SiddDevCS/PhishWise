@@ -40,14 +40,14 @@ struct CertificateView: View {
                                 .foregroundColor(.yellow)
                                 .accessibilityLabel("Certificate Icon")
                             
-                            Text(NSLocalizedString("congratulations", comment: "Congratulations"))
+                            Text("congratulations".localized)
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
                                 .multilineTextAlignment(.center)
                                 .accessibilityAddTraits(.isHeader)
                                 .accessibilityHeading(.h1)
                             
-                            Text(NSLocalizedString("course_completed", comment: "Course completed"))
+                            Text("course_completed".localized)
                                 .font(.title2)
                                 .multilineTextAlignment(.center)
                                 .foregroundColor(.secondary)
@@ -55,7 +55,7 @@ struct CertificateView: View {
                         
                         // Score Display
                         VStack(spacing: 12) {
-                            Text(NSLocalizedString("your_score", comment: "Your score"))
+                            Text("your_score".localized)
                                 .font(.headline)
                                 .foregroundColor(.secondary)
                             
@@ -64,7 +64,7 @@ struct CertificateView: View {
                                 .fontWeight(.bold)
                                 .foregroundColor(.blue)
                             
-                            Text(String(format: NSLocalizedString("percentage", comment: "Percentage"), 
+                            Text(String(format: "percentage".localized, 
                                       appViewModel.totalQuestions > 0 ? 
                                       Double(appViewModel.quizScore) / Double(appViewModel.totalQuestions) * 100 : 0))
                                 .font(.title3)
@@ -76,14 +76,14 @@ struct CertificateView: View {
                         
                         // Name Input
                         VStack(alignment: .leading, spacing: 12) {
-                            Text(NSLocalizedString("enter_name_certificate", comment: "Enter name for certificate"))
+                            Text("enter_name_certificate".localized)
                                 .font(.headline)
                                 .fontWeight(.semibold)
                             
-                            TextField(NSLocalizedString("your_name", comment: "Your name"), text: $userName)
+                            TextField("your_name".localized, text: $userName)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .font(.title3)
-                                .accessibilityLabel(NSLocalizedString("your_name", comment: "Your name"))
+                                .accessibilityLabel("your_name".localized)
                         }
                         
                         // Generate Certificate Button
@@ -93,7 +93,7 @@ struct CertificateView: View {
                             HStack {
                                 Image(systemName: "doc.text.fill")
                                     .font(.title2)
-                                Text(NSLocalizedString("generate_certificate", comment: "Generate certificate"))
+                                Text("generate_certificate".localized)
                                     .font(.title2)
                                     .fontWeight(.semibold)
                             }
@@ -104,19 +104,19 @@ struct CertificateView: View {
                             .cornerRadius(12)
                         }
                         .disabled(userName.isEmpty)
-                        .accessibilityLabel(NSLocalizedString("generate_certificate", comment: "Generate certificate"))
+                        .accessibilityLabel("generate_certificate".localized)
                         
                         Spacer()
                     }
                     .padding()
                 }
             }
-            .navigationTitle(NSLocalizedString("certificate", comment: "Certificate"))
+            .navigationTitle("certificate".localized)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 if !showingCertificate {
                     ToolbarItem(placement: .navigationBarLeading) {
-                        Button(NSLocalizedString("back", comment: "Back")) {
+                        Button("back".localized) {
                             appViewModel.navigateTo(.welcome)
                         }
                     }
@@ -157,14 +157,14 @@ struct CertificateDisplayView: View {
                         .font(.system(size: 60))
                         .foregroundColor(.blue)
                     
-                    Text(NSLocalizedString("certificate_completion", comment: "Certificate of completion"))
+                    Text("certificate_completion".localized)
                         .font(.title)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
                         .accessibilityAddTraits(.isHeader)
                         .accessibilityHeading(.h1)
                     
-                    Text(NSLocalizedString("phishing_awareness_course", comment: "Phishing Awareness Course"))
+                    Text("phishing_awareness_course".localized)
                         .font(.title2)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
@@ -177,7 +177,7 @@ struct CertificateDisplayView: View {
                 VStack(spacing: 20) {
                     // Recipient Name
                     VStack(spacing: 8) {
-                        Text(NSLocalizedString("awarded_to", comment: "Awarded to"))
+                        Text("awarded_to".localized)
                             .font(.headline)
                             .foregroundColor(.secondary)
                         
@@ -190,16 +190,16 @@ struct CertificateDisplayView: View {
                     
                     // Completion Details
                     VStack(spacing: 12) {
-                        Text(NSLocalizedString("has_successfully_completed", comment: "Has successfully completed"))
+                        Text("has_successfully_completed".localized)
                             .font(.body)
                             .multilineTextAlignment(.center)
                         
-                        Text(NSLocalizedString("phishing_awareness_training", comment: "Phishing Awareness Training"))
+                        Text("phishing_awareness_training".localized)
                             .font(.title2)
                             .fontWeight(.semibold)
                             .multilineTextAlignment(.center)
                         
-                        Text(NSLocalizedString("with_score", comment: "With a score of"))
+                        Text("with_score".localized)
                             .font(.body)
                             .foregroundColor(.secondary)
                         
@@ -211,7 +211,7 @@ struct CertificateDisplayView: View {
                     
                     // Date
                     VStack(spacing: 8) {
-                        Text(NSLocalizedString("completion_date", comment: "Completion date"))
+                        Text("completion_date".localized)
                             .font(.headline)
                             .foregroundColor(.secondary)
                         
@@ -227,7 +227,7 @@ struct CertificateDisplayView: View {
                 
                 // QR Code
                 VStack(spacing: 16) {
-                    Text(NSLocalizedString("verification_code", comment: "Verification code"))
+                    Text("verification_code".localized)
                         .font(.headline)
                         .foregroundColor(.secondary)
                     
@@ -251,7 +251,7 @@ struct CertificateDisplayView: View {
                             )
                     }
                     
-                    Text(NSLocalizedString("scan_to_verify", comment: "Scan to verify"))
+                    Text("scan_to_verify".localized)
                         .font(.caption)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
@@ -268,7 +268,7 @@ struct CertificateDisplayView: View {
                         HStack {
                             Image(systemName: "square.and.arrow.up")
                                 .font(.title2)
-                            Text(NSLocalizedString("share_certificate", comment: "Share certificate"))
+                            Text("share_certificate".localized)
                                 .font(.title2)
                                 .fontWeight(.semibold)
                         }
@@ -278,13 +278,13 @@ struct CertificateDisplayView: View {
                         .background(Color.blue)
                         .cornerRadius(12)
                     }
-                    .accessibilityLabel(NSLocalizedString("share_certificate", comment: "Share certificate"))
+                    .accessibilityLabel("share_certificate".localized)
                     
                     Button(action: onNewCertificate) {
                         HStack {
                             Image(systemName: "plus.circle")
                                 .font(.title2)
-                            Text(NSLocalizedString("new_certificate", comment: "New certificate"))
+                            Text("new_certificate".localized)
                                 .font(.title2)
                                 .fontWeight(.semibold)
                         }
@@ -294,7 +294,7 @@ struct CertificateDisplayView: View {
                         .background(Color.blue.opacity(0.1))
                         .cornerRadius(12)
                     }
-                    .accessibilityLabel(NSLocalizedString("new_certificate", comment: "New certificate"))
+                    .accessibilityLabel("new_certificate".localized)
                 }
                 
                 Spacer(minLength: 50)

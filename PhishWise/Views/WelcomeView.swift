@@ -25,14 +25,14 @@ struct WelcomeView: View {
                     .accessibilityLabel("PhishWise App Icon")
                     .accessibilityAddTraits(.isImage)
                 
-                Text(NSLocalizedString("welcome_title", comment: "Welcome title"))
+                Text("welcome_title".localized)
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
                     .accessibilityAddTraits(.isHeader)
                     .accessibilityHeading(.h1)
                 
-                Text(NSLocalizedString("welcome_subtitle", comment: "Welcome subtitle"))
+                Text("welcome_subtitle".localized)
                     .font(.title2)
                     .multilineTextAlignment(.center)
                     .foregroundColor(.secondary)
@@ -49,7 +49,7 @@ struct WelcomeView: View {
                 HStack {
                     Text(appViewModel.currentLanguage.flag)
                         .font(.title)
-                    Text(NSLocalizedString("language_settings", comment: "Language settings"))
+                    Text("language_settings".localized)
                         .font(.headline)
                     Spacer()
                     Image(systemName: "chevron.right")
@@ -58,7 +58,7 @@ struct WelcomeView: View {
                 .padding()
                 .background(Color(.systemGray6))
                 .cornerRadius(12)
-                .accessibilityLabel(NSLocalizedString("accessibility_language_button", comment: "Language button accessibility"))
+                .accessibilityLabel("accessibility_language_button".localized)
             }
             .padding(.horizontal)
             
@@ -68,7 +68,7 @@ struct WelcomeView: View {
                 Button(action: {
                     appViewModel.navigateTo(.lessons)
                 }) {
-                    Text(NSLocalizedString("start_learning", comment: "Start learning"))
+                    Text("start_learning".localized)
                         .font(.title2)
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
@@ -77,13 +77,13 @@ struct WelcomeView: View {
                         .background(Color.blue)
                         .cornerRadius(12)
                 }
-                .accessibilityLabel(NSLocalizedString("accessibility_lesson_button", comment: "Lesson button accessibility"))
+                .accessibilityLabel("accessibility_lesson_button".localized)
                 
                 // Quick Quiz Button
                 Button(action: {
                     appViewModel.startQuiz()
                 }) {
-                    Text(NSLocalizedString("quiz", comment: "Quiz"))
+                    Text("quiz".localized)
                         .font(.title2)
                         .fontWeight(.semibold)
                         .foregroundColor(.blue)
@@ -92,7 +92,7 @@ struct WelcomeView: View {
                         .background(Color.blue.opacity(0.1))
                         .cornerRadius(12)
                 }
-                .accessibilityLabel(NSLocalizedString("accessibility_quiz_button", comment: "Quiz button accessibility"))
+                .accessibilityLabel("accessibility_quiz_button".localized)
             }
             .padding(.horizontal)
             
@@ -116,7 +116,7 @@ struct LanguagePickerView: View {
             List {
                 ForEach(Language.allCases, id: \.self) { language in
                     Button(action: {
-                        appViewModel.currentLanguage = language
+                        appViewModel.changeLanguage(to: language)
                         dismiss()
                     }) {
                         HStack {
@@ -135,11 +135,11 @@ struct LanguagePickerView: View {
                     .buttonStyle(PlainButtonStyle())
                 }
             }
-            .navigationTitle(NSLocalizedString("language_settings", comment: "Language settings"))
+            .navigationTitle("language_settings".localized)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(NSLocalizedString("finish", comment: "Finish")) {
+                    Button("finish".localized) {
                         dismiss()
                     }
                 }

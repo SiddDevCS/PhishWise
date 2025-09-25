@@ -11,13 +11,17 @@ import SwiftUI
 // MARK: - App View Model
 /// Main view model that manages app state and navigation
 class AppViewModel: ObservableObject {
-    @Published var currentLanguage: Language = .dutch
     @Published var currentView: AppView = .welcome
     @Published var quizScore: Int = 0
     @Published var totalQuestions: Int = 0
     @Published var currentQuestionIndex: Int = 0
     @Published var selectedAnswer: Bool?
     @Published var showFeedback: Bool = false
+    
+    // Use the shared localization helper
+    var currentLanguage: Language {
+        return LocalizationHelper.shared.currentLanguage
+    }
     
     // MARK: - Navigation Methods
     func navigateTo(_ view: AppView) {
@@ -62,26 +66,20 @@ class AppViewModel: ObservableObject {
     
     // MARK: - Language Management
     func changeLanguage(to language: Language) {
-        currentLanguage = language
-        saveLanguagePreference()
-        
-        // Post notification to update UI
-        NotificationCenter.default.post(name: .languageChanged, object: language)
-    }
-    
-    private func saveLanguagePreference() {
-        UserDefaults.standard.set(currentLanguage.rawValue, forKey: "selectedLanguage")
-    }
-    
-    private func loadLanguagePreference() {
-        if let savedLanguage = UserDefaults.standard.string(forKey: "selectedLanguage"),
-           let language = Language(rawValue: savedLanguage) {
-            currentLanguage = language
-        }
+        LocalizationHelper.shared.setLanguage(language)
+        // Trigger UI update
+        objectWillChange.send()
     }
     
     init() {
-        loadLanguagePreference()
+        // Listen for language changes
+        NotificationCenter.default.addObserver(
+            forName: .languageChanged,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            self?.objectWillChange.send()
+        }
     }
 }
 
@@ -102,7 +100,3 @@ enum TabSelection {
     case settings
 }
 
-// MARK: - Notification Names
-extension Notification.Name {
-    static let languageChanged = Notification.Name("languageChanged")
-}

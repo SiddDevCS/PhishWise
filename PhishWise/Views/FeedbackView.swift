@@ -29,8 +29,8 @@ struct FeedbackView: View {
                             .accessibilityLabel(isCorrect ? "Correct answer" : "Incorrect answer")
                         
                         Text(isCorrect ? 
-                             NSLocalizedString("correct_answer", comment: "Correct answer") : 
-                             NSLocalizedString("incorrect_answer", comment: "Incorrect answer"))
+                             "correct_answer".localized : 
+                             "incorrect_answer".localized)
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .foregroundColor(isCorrect ? .green : .red)
@@ -41,7 +41,7 @@ struct FeedbackView: View {
                     
                     // Question Review
                     VStack(alignment: .leading, spacing: 16) {
-                        Text(NSLocalizedString("explanation", comment: "Explanation"))
+                        Text("explanation".localized)
                             .font(.title2)
                             .fontWeight(.bold)
                             .accessibilityAddTraits(.isHeader)
@@ -84,11 +84,11 @@ struct FeedbackView: View {
                     Spacer(minLength: 50)
                 }
             }
-            .navigationTitle(NSLocalizedString("explanation", comment: "Explanation"))
+            .navigationTitle("explanation".localized)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(NSLocalizedString("continue", comment: "Continue")) {
+                    Button("continue".localized) {
                         if quizViewModel.isLastQuestion {
                             quizViewModel.nextQuestion()
                             dismiss()
