@@ -1,18 +1,18 @@
 [
   {
     "id": 1,
-    "text_en": "You receive an email from 'support@amaz0n.com' asking you to click a link to verify your account due to suspicious activity. The email contains spelling errors and urgent language.",
-    "text_nl": "Je ontvangt een e-mail van 'support@amaz0n.com' waarin wordt gevraagd om op een link te klikken om je account te verifiëren vanwege verdachte activiteit. De e-mail bevat spelfouten en dringende taal.",
+    "text_en": "Test test test test test test.",
+    "text_nl": "Test test test test test test.",
     "is_phishing": true,
-    "explanation_en": "This is a phishing attempt. Legitimate companies like Amazon use their official domain (amazon.com) and don't ask for urgent account verification via email links. The misspelled domain 'amaz0n.com' is a red flag.",
-    "explanation_nl": "Dit is een phishing poging. Legitieme bedrijven zoals Amazon gebruiken hun officiële domein (amazon.com) en vragen niet om dringende accountverificatie via e-maillinks. Het verkeerd gespelde domein 'amaz0n.com' is een waarschuwingssignaal."
+    "explanation_en": "Test test test test test test. Test test test test test test. Test test test test test test. Test test test test test test. Test test test test test test.",
+    "explanation_nl": "Test test test test test test. Test test test test test test. Test test test test test test. Test test test test test test. Test test test test test test."
   },
   {
     "id": 2,
-    "text_en": "You receive an email from your bank (using the official domain @yourbank.com) informing you about a new security feature. The email asks you to log in through the official bank website (not via a link) to enable this feature.",
-    "text_nl": "Je ontvangt een e-mail van je bank (met het officiële domein @yourbank.com) die je informeert over een nieuwe beveiligingsfunctie. De e-mail vraagt je om in te loggen via de officiële bankwebsite (niet via een link) om deze functie in te schakelen.",
+    "text_en": "Test test test test test test.",
+    "text_nl": "Test test test test test test.",
     "is_phishing": false,
-    "explanation_en": "This appears to be a legitimate communication. The bank uses their official domain, doesn't include suspicious links, and directs you to log in through the official website rather than clicking a link in the email.",
-    "explanation_nl": "Dit lijkt een legitieme communicatie te zijn. De bank gebruikt hun officiële domein, bevat geen verdachte links en stuurt je naar de officiële website om in te loggen in plaats van op een link in de e-mail te klikken."
+    "explanation_en": "Test test test test test test. Test test test test test test. Test test test test test test. Test test test test test test. Test test test test test test.",
+    "explanation_nl": "Test test test test test test. Test test test test test test. Test test test test test test. Test test test test test test. Test test test test test test."
   }
 ]
