@@ -8,66 +8,75 @@
 import SwiftUI
 
 // MARK: - Lesson View
-/// Displays learning modules with placeholder content
+/// Displays learning modules with educational content
 struct LessonView: View {
     @ObservedObject var appViewModel: AppViewModel
+    @StateObject private var lessonDataManager = LessonDataManager()
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(spacing: 24) {
-                    // Header
-                    VStack(spacing: 16) {
-                        Image(systemName: "book.fill")
-                            .font(.system(size: 60))
-                            .foregroundColor(.green)
-                            .accessibilityLabel("Learning Icon")
-                        
-                        Text("lesson_title".localized)
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .multilineTextAlignment(.center)
-                            .accessibilityAddTraits(.isHeader)
-                    }
-                    .padding(.top)
-                    
-                    // Placeholder Lesson Cards
+            Group {
+                if lessonDataManager.isLoading {
                     VStack(spacing: 20) {
-                        LessonCard(
-                            title: "What is Phishing?",
-                            titleNl: "Wat is Phishing?",
-                            icon: "exclamationmark.triangle.fill",
-                            color: .red,
-                            appViewModel: appViewModel
-                        )
-                        
-                        LessonCard(
-                            title: "Common Phishing Techniques",
-                            titleNl: "Veelvoorkomende Phishing Technieken",
-                            icon: "eye.fill",
-                            color: .orange,
-                            appViewModel: appViewModel
-                        )
-                        
-                        LessonCard(
-                            title: "How to Protect Yourself",
-                            titleNl: "Hoe Jezelf te Beschermen",
-                            icon: "shield.fill",
-                            color: .blue,
-                            appViewModel: appViewModel
-                        )
-                        
-                        LessonCard(
-                            title: "Real Examples",
-                            titleNl: "Echte Voorbeelden",
-                            icon: "doc.text.fill",
-                            color: .purple,
-                            appViewModel: appViewModel
-                        )
+                        ProgressView()
+                            .scaleEffect(1.5)
+                        Text("loading_lessons".localized)
+                            .font(.title3)
+                            .foregroundColor(.secondary)
                     }
-                    .padding(.horizontal)
-                    
-                    Spacer(minLength: 100)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else if let error = lessonDataManager.error {
+                    VStack(spacing: 20) {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .font(.system(size: 50))
+                            .foregroundColor(.red)
+                        Text("error_loading_lessons".localized)
+                            .font(.headline)
+                        Text(error)
+                            .font(.body)
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
+                        Button("try_again".localized) {
+                            lessonDataManager.loadLessons()
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .font(.title3)
+                        .padding()
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else {
+                    ScrollView {
+                        VStack(spacing: 24) {
+                            // Header
+                            VStack(spacing: 16) {
+                                Image(systemName: "book.fill")
+                                    .font(.system(size: 60))
+                                    .foregroundColor(.green)
+                                    .accessibilityLabel("Learning Icon")
+                                
+                                Text("lesson_title".localized)
+                                    .font(.largeTitle)
+                                    .fontWeight(.bold)
+                                    .multilineTextAlignment(.center)
+                                    .accessibilityAddTraits(.isHeader)
+                            }
+                            .padding(.top)
+                            
+                            // Lesson Cards
+                            VStack(spacing: 20) {
+                                ForEach(lessonDataManager.lessons) { lesson in
+                                    LessonCardView(
+                                        lesson: lesson,
+                                        appViewModel: appViewModel
+                                    )
+                                }
+                            }
+                            .padding(.horizontal)
+                            
+                            Spacer(minLength: 100)
+                        }
+                    }
                 }
             }
             .navigationTitle("lessons".localized)
@@ -77,77 +86,115 @@ struct LessonView: View {
                     Button("back".localized) {
                         appViewModel.navigateTo(.welcome)
                     }
+                    .font(.title3)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 8)
                 }
             }
         }
     }
 }
 
-// MARK: - Lesson Card
-struct LessonCard: View {
-    let title: String
-    let titleNl: String
-    let icon: String
-    let color: Color
+// MARK: - Lesson Card View
+struct LessonCardView: View {
+    let lesson: Lesson
     @ObservedObject var appViewModel: AppViewModel
     @State private var isExpanded = false
     
-    var localizedTitle: String {
-        appViewModel.currentLanguage == .dutch ? titleNl : title
-    }
-    
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 20) {
             // Card Header
-            HStack {
-                Image(systemName: icon)
-                    .font(.title2)
-                    .foregroundColor(color)
-                    .frame(width: 30)
-                
-                Text(localizedTitle)
-                    .font(.headline)
-                    .fontWeight(.semibold)
-                    .multilineTextAlignment(.leading)
-                
-                Spacer()
-                
-                Button(action: {
-                    withAnimation(.easeInOut(duration: 0.3)) {
-                        isExpanded.toggle()
-                    }
-                }) {
+            Button(action: {
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    isExpanded.toggle()
+                }
+            }) {
+                HStack {
+                    Image(systemName: lesson.icon)
+                        .font(.title2)
+                        .foregroundColor(lesson.color)
+                        .frame(width: 40)
+                    
+                    Text(lesson.title(for: appViewModel.currentLanguage))
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        .multilineTextAlignment(.leading)
+                        .foregroundColor(.primary)
+                    
+                    Spacer()
+                    
                     Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
-                        .font(.caption)
+                        .font(.title3)
                         .foregroundColor(.secondary)
                 }
             }
+            .buttonStyle(PlainButtonStyle())
             
             // Card Content
             if isExpanded {
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("lesson_placeholder".localized)
-                        .font(.body)
-                        .foregroundColor(.secondary)
-                        .multilineTextAlignment(.leading)
-                    
-                    // Placeholder for future content
-                    Text("coming_soon".localized)
-                        .font(.caption)
-                        .fontWeight(.medium)
-                        .foregroundColor(color)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 6)
-                        .background(color.opacity(0.1))
-                        .cornerRadius(8)
+                VStack(alignment: .leading, spacing: 20) {
+                    ForEach(Array(lesson.content(for: appViewModel.currentLanguage).enumerated()), id: \.offset) { index, section in
+                        LessonSectionView(section: section, language: appViewModel.currentLanguage, color: lesson.color)
+                    }
                 }
                 .transition(.opacity.combined(with: .move(edge: .top)))
             }
         }
-        .padding()
-        .background(Color(.systemGray6))
+        .padding(20)
+        .background(Color(.systemBackground))
         .cornerRadius(16)
-        .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
+        .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(lesson.color.opacity(0.3), lineWidth: 2)
+        )
+    }
+}
+
+// MARK: - Lesson Section View
+struct LessonSectionView: View {
+    let section: LessonSection
+    let language: Language
+    let color: Color
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            if let title = section.title(for: language) {
+                Text(title)
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .foregroundColor(color)
+            }
+            
+            Text(section.text(for: language))
+                .font(.body)
+                .lineSpacing(4)
+                .multilineTextAlignment(.leading)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(16)
+        .background(
+            Group {
+                switch section.type {
+                case "example":
+                    Color.orange.opacity(0.1)
+                case "tip":
+                    Color.blue.opacity(0.1)
+                default:
+                    Color(.systemGray6)
+                }
+            }
+        )
+        .cornerRadius(12)
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(
+                    section.type == "example" ? Color.orange.opacity(0.3) :
+                    section.type == "tip" ? Color.blue.opacity(0.3) :
+                    Color.clear,
+                    lineWidth: 1
+                )
+        )
     }
 }
 

@@ -1,18 +1,82 @@
 [
   {
     "id": 1,
-    "text_en": "Test test test test test test.",
-    "text_nl": "Test test test test test test.",
+    "text_en": "URGENT: Your bank account will be closed in 24 hours! Click here to verify: http://bank-security-verify.com",
+    "text_nl": "DRINGEND: Je bankrekening wordt binnen 24 uur gesloten! Klik hier om te verifiëren: http://bank-security-verify.com",
     "is_phishing": true,
-    "explanation_en": "Test test test test test test. Test test test test test test. Test test test test test test. Test test test test test test. Test test test test test test.",
-    "explanation_nl": "Test test test test test test. Test test test test test test. Test test test test test test. Test test test test test test. Test test test test test test."
+    "explanation_en": "This is phishing! Real banks never send urgent emails threatening to close your account. They also use secure websites (https://) not http://. The link looks suspicious and doesn't match a real bank's website.",
+    "explanation_nl": "Dit is phishing! Echte banken sturen nooit dringende e-mails die dreigen je account te sluiten. Ze gebruiken ook beveiligde websites (https://) niet http://. De link ziet er verdacht uit en komt niet overeen met de website van een echte bank."
   },
   {
     "id": 2,
-    "text_en": "Test test test test test test.",
-    "text_nl": "Test test test test test test.",
+    "text_en": "Your package delivery failed. Click here to reschedule: bit.ly/delivery-reschedule-123",
+    "text_nl": "Je pakketbezorging is mislukt. Klik hier om opnieuw in te plannen: bit.ly/delivery-reschedule-123",
+    "is_phishing": true,
+    "explanation_en": "This is SMS phishing (smishing)! Real delivery companies use official apps or their official website. They don't send links through text messages. Short links like bit.ly can hide dangerous websites.",
+    "explanation_nl": "Dit is SMS phishing (smishing)! Echte bezorgbedrijven gebruiken officiële apps of hun officiële website. Ze sturen geen links via tekstberichten. Korte links zoals bit.ly kunnen gevaarlijke websites verbergen."
+  },
+  {
+    "id": 3,
+    "text_en": "Hi! This is your friend Maria. I'm in trouble and need €500 urgently. Can you send it to this account? I'll pay you back tomorrow.",
+    "text_nl": "Hoi! Dit is je vriendin Maria. Ik zit in de problemen en heb dringend €500 nodig. Kun je het naar dit account sturen? Ik betaal je morgen terug.",
+    "is_phishing": true,
+    "explanation_en": "This is a WhatsApp scam! Real friends don't ask for money urgently through WhatsApp without explaining first. Always call the person directly to verify. Scammers often pretend to be someone you know.",
+    "explanation_nl": "Dit is WhatsApp oplichting! Echte vrienden vragen niet dringend om geld via WhatsApp zonder eerst uit te leggen. Bel de persoon altijd direct om te verifiëren. Oplichters doen zich vaak voor als iemand die je kent."
+  },
+  {
+    "id": 4,
+    "text_en": "Your Amazon order #12345 has been shipped. Track your package: https://amazon.com/track/12345",
+    "text_nl": "Je Amazon bestelling #12345 is verzonden. Volg je pakket: https://amazon.com/track/12345",
     "is_phishing": false,
-    "explanation_en": "Test test test test test test. Test test test test test test. Test test test test test test. Test test test test test test. Test test test test test test.",
-    "explanation_nl": "Test test test test test test. Test test test test test test. Test test test test test test. Test test test test test test. Test test test test test test."
+    "explanation_en": "This looks legitimate! It uses the real Amazon website (amazon.com) with https:// for security. Real companies use their official domain names. However, always check your Amazon account directly to be sure.",
+    "explanation_nl": "Dit ziet er legitiem uit! Het gebruikt de echte Amazon website (amazon.com) met https:// voor beveiliging. Echte bedrijven gebruiken hun officiële domeinnamen. Controleer echter altijd direct je Amazon account om zeker te zijn."
+  },
+  {
+    "id": 5,
+    "text_en": "Your Netflix account has been suspended. Verify your payment: http://netflix-account-verify.net",
+    "text_nl": "Je Netflix account is opgeschort. Verifieer je betaling: http://netflix-account-verify.net",
+    "is_phishing": true,
+    "explanation_en": "This is phishing! Netflix uses 'netflix.com' not 'netflix-account-verify.net'. The website uses http:// instead of https://, which is not secure. Real companies never ask you to verify payment through email links.",
+    "explanation_nl": "Dit is phishing! Netflix gebruikt 'netflix.com' niet 'netflix-account-verify.net'. De website gebruikt http:// in plaats van https://, wat niet veilig is. Echte bedrijven vragen je nooit om betaling te verifiëren via e-maillinks."
+  },
+  {
+    "id": 6,
+    "text_en": "You have won €10,000! Click here to claim your prize: http://prize-winner-claim.com",
+    "text_nl": "Je hebt €10.000 gewonnen! Klik hier om je prijs op te eisen: http://prize-winner-claim.com",
+    "is_phishing": true,
+    "explanation_en": "This is definitely phishing! Messages about winning prizes you didn't enter are always scams. Real prizes don't require you to click links or provide personal information. If it seems too good to be true, it is!",
+    "explanation_nl": "Dit is zeker phishing! Berichten over het winnen van prijzen waarvoor je niet hebt meegedaan zijn altijd oplichting. Echte prijzen vereisen niet dat je op links klikt of persoonlijke informatie verstrekt. Als het te mooi lijkt om waar te zijn, is het dat ook!"
+  },
+  {
+    "id": 7,
+    "text_en": "Your appointment with Dr. Smith is confirmed for tomorrow at 2 PM. Please arrive 10 minutes early.",
+    "text_nl": "Je afspraak met Dr. Smith is bevestigd voor morgen om 14:00. Kom graag 10 minuten van tevoren.",
+    "is_phishing": false,
+    "explanation_en": "This looks legitimate! It's a simple confirmation message with no urgent language, no suspicious links, and no requests for personal information. Real appointment confirmations are usually straightforward like this.",
+    "explanation_nl": "Dit ziet er legitiem uit! Het is een eenvoudig bevestigingsbericht zonder dringende taal, zonder verdachte links en zonder verzoeken om persoonlijke informatie. Echte afspraakbevestigingen zijn meestal zo rechttoe rechtaan."
+  },
+  {
+    "id": 8,
+    "text_en": "Your WhatsApp account will be deleted! Verify now: whatsapp-verify-security.com",
+    "text_nl": "Je WhatsApp account wordt verwijderd! Verifieer nu: whatsapp-verify-security.com",
+    "is_phishing": true,
+    "explanation_en": "This is phishing! WhatsApp never sends messages threatening to delete your account. The website 'whatsapp-verify-security.com' is fake - real WhatsApp uses 'whatsapp.com'. Never click links in messages about account deletion.",
+    "explanation_nl": "Dit is phishing! WhatsApp stuurt nooit berichten die dreigen je account te verwijderen. De website 'whatsapp-verify-security.com' is nep - echte WhatsApp gebruikt 'whatsapp.com'. Klik nooit op links in berichten over accountverwijdering."
+  },
+  {
+    "id": 9,
+    "text_en": "Your payment of €29.99 to Spotify has been processed. Thank you for your subscription.",
+    "text_nl": "Je betaling van €29,99 aan Spotify is verwerkt. Bedankt voor je abonnement.",
+    "is_phishing": false,
+    "explanation_en": "This looks legitimate! It's a simple payment confirmation with no links, no urgent language, and no requests for action. Real payment confirmations are usually straightforward notifications like this.",
+    "explanation_nl": "Dit ziet er legitiem uit! Het is een eenvoudige betalingsbevestiging zonder links, zonder dringende taal en zonder verzoeken om actie. Echte betalingsbevestigingen zijn meestal zo'n eenvoudige meldingen."
+  },
+  {
+    "id": 10,
+    "text_en": "Your tax refund is ready! Click here to claim: tax-refund-claim-gov.com",
+    "text_nl": "Je belastingteruggave is klaar! Klik hier om op te eisen: tax-refund-claim-gov.com",
+    "is_phishing": true,
+    "explanation_en": "This is phishing! Government agencies never send tax refund notifications by email or text with links. They use official mail or their official website. The domain 'tax-refund-claim-gov.com' is fake - real government sites use .gov domains.",
+    "explanation_nl": "Dit is phishing! Overheidsinstanties sturen nooit belastingteruggave meldingen per e-mail of tekst met links. Ze gebruiken officiële post of hun officiële website. Het domein 'tax-refund-claim-gov.com' is nep - echte overheidsites gebruiken .gov domeinen."
   }
 ]

@@ -1,0 +1,296 @@
+[
+  {
+    "id": 1,
+    "title_en": "What is Phishing?",
+    "title_nl": "Wat is Phishing?",
+    "icon": "exclamationmark.triangle.fill",
+    "color_name": "red",
+    "content_en": [
+      {
+        "type": "text",
+        "title_en": null,
+        "title_nl": null,
+        "text_en": "Phishing is when criminals try to trick you into giving them your personal information. They pretend to be someone you trust, like your bank or a company you know.",
+        "text_nl": "Phishing is wanneer criminelen proberen je te misleiden om je persoonlijke informatie te geven. Ze doen zich voor als iemand die je vertrouwt, zoals je bank of een bedrijf dat je kent."
+      },
+      {
+        "type": "text",
+        "title_en": null,
+        "title_nl": null,
+        "text_en": "These criminals want to steal your passwords, credit card numbers, or other private information. They use this information to steal your money or identity.",
+        "text_nl": "Deze criminelen willen je wachtwoorden, creditcardnummers of andere privé-informatie stelen. Ze gebruiken deze informatie om je geld of identiteit te stelen."
+      },
+      {
+        "type": "example",
+        "title_en": "Example",
+        "title_nl": "Voorbeeld",
+        "text_en": "You receive an email that looks like it's from your bank. It says your account will be closed unless you click a link and enter your password. This is phishing! Your real bank would never ask for your password by email.",
+        "text_nl": "Je ontvangt een e-mail die eruitziet alsof deze van je bank komt. Er staat dat je account wordt gesloten tenzij je op een link klikt en je wachtwoord invoert. Dit is phishing! Je echte bank zou nooit om je wachtwoord vragen via e-mail."
+      }
+    ],
+    "content_nl": [
+      {
+        "type": "text",
+        "title_en": null,
+        "title_nl": null,
+        "text_en": "Phishing is when criminals try to trick you into giving them your personal information. They pretend to be someone you trust, like your bank or a company you know.",
+        "text_nl": "Phishing is wanneer criminelen proberen je te misleiden om je persoonlijke informatie te geven. Ze doen zich voor als iemand die je vertrouwt, zoals je bank of een bedrijf dat je kent."
+      },
+      {
+        "type": "text",
+        "title_en": null,
+        "title_nl": null,
+        "text_en": "These criminals want to steal your passwords, credit card numbers, or other private information. They use this information to steal your money or identity.",
+        "text_nl": "Deze criminelen willen je wachtwoorden, creditcardnummers of andere privé-informatie stelen. Ze gebruiken deze informatie om je geld of identiteit te stelen."
+      },
+      {
+        "type": "example",
+        "title_en": "Example",
+        "title_nl": "Voorbeeld",
+        "text_en": "You receive an email that looks like it's from your bank. It says your account will be closed unless you click a link and enter your password. This is phishing! Your real bank would never ask for your password by email.",
+        "text_nl": "Je ontvangt een e-mail die eruitziet alsof deze van je bank komt. Er staat dat je account wordt gesloten tenzij je op een link klikt en je wachtwoord invoert. Dit is phishing! Je echte bank zou nooit om je wachtwoord vragen via e-mail."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title_en": "Email Phishing",
+    "title_nl": "E-mail Phishing",
+    "icon": "envelope.fill",
+    "color_name": "orange",
+    "content_en": [
+      {
+        "type": "text",
+        "title_en": null,
+        "title_nl": null,
+        "text_en": "Email phishing is the most common type. Criminals send fake emails that look real. They want you to click links or open attachments.",
+        "text_nl": "E-mail phishing is het meest voorkomende type. Criminelen sturen nep-e-mails die er echt uitzien. Ze willen dat je op links klikt of bijlagen opent."
+      },
+      {
+        "type": "tip",
+        "title_en": "Warning Signs",
+        "title_nl": "Waarschuwingssignalen",
+        "text_en": "• Urgent language: 'Act now!' or 'Your account will be closed!'\n• Strange email addresses: support@bank-security.com instead of support@yourbank.com\n• Poor spelling and grammar\n• Asking for passwords or personal information\n• Suspicious links that don't match the company name",
+        "text_nl": "• Dringende taal: 'Handel nu!' of 'Je account wordt gesloten!'\n• Vreemde e-mailadressen: support@bank-security.com in plaats van support@jebank.com\n• Slechte spelling en grammatica\n• Vragen om wachtwoorden of persoonlijke informatie\n• Verdachte links die niet overeenkomen met de bedrijfsnaam"
+      },
+      {
+        "type": "example",
+        "title_en": "Real Example",
+        "title_nl": "Echt Voorbeeld",
+        "text_en": "Subject: URGENT: Verify Your Account\n\nDear Customer,\n\nWe detected suspicious activity. Click here to verify: http://fake-bank-security.com\n\nIf you don't verify within 24 hours, your account will be closed.\n\nThis is phishing! Real banks use secure websites (https://) and never send urgent verification emails.",
+        "text_nl": "Onderwerp: DRINGEND: Verifieer Je Account\n\nBeste Klant,\n\nWe hebben verdachte activiteit gedetecteerd. Klik hier om te verifiëren: http://fake-bank-security.com\n\nAls je niet binnen 24 uur verifieert, wordt je account gesloten.\n\nDit is phishing! Echte banken gebruiken beveiligde websites (https://) en sturen nooit dringende verificatie-e-mails."
+      }
+    ],
+    "content_nl": [
+      {
+        "type": "text",
+        "title_en": null,
+        "title_nl": null,
+        "text_en": "Email phishing is the most common type. Criminals send fake emails that look real. They want you to click links or open attachments.",
+        "text_nl": "E-mail phishing is het meest voorkomende type. Criminelen sturen nep-e-mails die er echt uitzien. Ze willen dat je op links klikt of bijlagen opent."
+      },
+      {
+        "type": "tip",
+        "title_en": "Warning Signs",
+        "title_nl": "Waarschuwingssignalen",
+        "text_en": "• Urgent language: 'Act now!' or 'Your account will be closed!'\n• Strange email addresses: support@bank-security.com instead of support@yourbank.com\n• Poor spelling and grammar\n• Asking for passwords or personal information\n• Suspicious links that don't match the company name",
+        "text_nl": "• Dringende taal: 'Handel nu!' of 'Je account wordt gesloten!'\n• Vreemde e-mailadressen: support@bank-security.com in plaats van support@jebank.com\n• Slechte spelling en grammatica\n• Vragen om wachtwoorden of persoonlijke informatie\n• Verdachte links die niet overeenkomen met de bedrijfsnaam"
+      },
+      {
+        "type": "example",
+        "title_en": "Real Example",
+        "title_nl": "Echt Voorbeeld",
+        "text_en": "Subject: URGENT: Verify Your Account\n\nDear Customer,\n\nWe detected suspicious activity. Click here to verify: http://fake-bank-security.com\n\nIf you don't verify within 24 hours, your account will be closed.\n\nThis is phishing! Real banks use secure websites (https://) and never send urgent verification emails.",
+        "text_nl": "Onderwerp: DRINGEND: Verifieer Je Account\n\nBeste Klant,\n\nWe hebben verdachte activiteit gedetecteerd. Klik hier om te verifiëren: http://fake-bank-security.com\n\nAls je niet binnen 24 uur verifieert, wordt je account gesloten.\n\nDit is phishing! Echte banken gebruiken beveiligde websites (https://) en sturen nooit dringende verificatie-e-mails."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title_en": "SMS Phishing (Smishing)",
+    "title_nl": "SMS Phishing (Smishing)",
+    "icon": "message.fill",
+    "color_name": "blue",
+    "content_en": [
+      {
+        "type": "text",
+        "title_en": null,
+        "title_nl": null,
+        "text_en": "SMS phishing (also called 'smishing') uses text messages instead of emails. Criminals send fake text messages to trick you.",
+        "text_nl": "SMS phishing (ook wel 'smishing' genoemd) gebruikt tekstberichten in plaats van e-mails. Criminelen sturen nep-tekstberichten om je te misleiden."
+      },
+      {
+        "type": "text",
+        "title_en": null,
+        "title_nl": null,
+        "text_en": "These messages often claim to be from delivery companies, banks, or government agencies. They want you to click a link or call a number.",
+        "text_nl": "Deze berichten beweren vaak van bezorgbedrijven, banken of overheidsinstanties te zijn. Ze willen dat je op een link klikt of een nummer belt."
+      },
+      {
+        "type": "tip",
+        "title_en": "Warning Signs",
+        "title_nl": "Waarschuwingssignalen",
+        "text_en": "• Unknown phone numbers\n• Urgent messages about packages or payments\n• Links to websites you don't recognize\n• Requests to call a number immediately\n• Messages asking for personal information",
+        "text_nl": "• Onbekende telefoonnummers\n• Dringende berichten over pakketten of betalingen\n• Links naar websites die je niet herkent\n• Verzoeken om direct een nummer te bellen\n• Berichten die om persoonlijke informatie vragen"
+      },
+      {
+        "type": "example",
+        "title_en": "Real Example",
+        "title_nl": "Echt Voorbeeld",
+        "text_en": "SMS: 'Your package delivery failed. Click here to reschedule: bit.ly/fake-delivery\n\nThis is phishing! Real delivery companies use official apps or websites. Never click links in unexpected text messages.",
+        "text_nl": "SMS: 'Je pakketbezorging is mislukt. Klik hier om opnieuw in te plannen: bit.ly/fake-delivery\n\nDit is phishing! Echte bezorgbedrijven gebruiken officiële apps of websites. Klik nooit op links in onverwachte tekstberichten."
+      }
+    ],
+    "content_nl": [
+      {
+        "type": "text",
+        "title_en": null,
+        "title_nl": null,
+        "text_en": "SMS phishing (also called 'smishing') uses text messages instead of emails. Criminals send fake text messages to trick you.",
+        "text_nl": "SMS phishing (ook wel 'smishing' genoemd) gebruikt tekstberichten in plaats van e-mails. Criminelen sturen nep-tekstberichten om je te misleiden."
+      },
+      {
+        "type": "text",
+        "title_en": null,
+        "title_nl": null,
+        "text_en": "These messages often claim to be from delivery companies, banks, or government agencies. They want you to click a link or call a number.",
+        "text_nl": "Deze berichten beweren vaak van bezorgbedrijven, banken of overheidsinstanties te zijn. Ze willen dat je op een link klikt of een nummer belt."
+      },
+      {
+        "type": "tip",
+        "title_en": "Warning Signs",
+        "title_nl": "Waarschuwingssignalen",
+        "text_en": "• Unknown phone numbers\n• Urgent messages about packages or payments\n• Links to websites you don't recognize\n• Requests to call a number immediately\n• Messages asking for personal information",
+        "text_nl": "• Onbekende telefoonnummers\n• Dringende berichten over pakketten of betalingen\n• Links naar websites die je niet herkent\n• Verzoeken om direct een nummer te bellen\n• Berichten die om persoonlijke informatie vragen"
+      },
+      {
+        "type": "example",
+        "title_en": "Real Example",
+        "title_nl": "Echt Voorbeeld",
+        "text_en": "SMS: 'Your package delivery failed. Click here to reschedule: bit.ly/fake-delivery\n\nThis is phishing! Real delivery companies use official apps or websites. Never click links in unexpected text messages.",
+        "text_nl": "SMS: 'Je pakketbezorging is mislukt. Klik hier om opnieuw in te plannen: bit.ly/fake-delivery\n\nDit is phishing! Echte bezorgbedrijven gebruiken officiële apps of websites. Klik nooit op links in onverwachte tekstberichten."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title_en": "WhatsApp Scams",
+    "title_nl": "WhatsApp Oplichting",
+    "icon": "message.circle.fill",
+    "color_name": "green",
+    "content_en": [
+      {
+        "type": "text",
+        "title_en": null,
+        "title_nl": null,
+        "text_en": "WhatsApp scams are becoming very common. Criminals send messages through WhatsApp pretending to be friends, family, or companies you know.",
+        "text_nl": "WhatsApp oplichting wordt steeds vaker voor. Criminelen sturen berichten via WhatsApp en doen zich voor als vrienden, familie of bedrijven die je kent."
+      },
+      {
+        "type": "text",
+        "title_en": null,
+        "title_nl": null,
+        "text_en": "They might ask for money, personal information, or ask you to click links. Always verify who you're talking to, even if it looks like someone you know.",
+        "text_nl": "Ze kunnen om geld vragen, persoonlijke informatie vragen of je vragen om op links te klikken. Verifieer altijd met wie je praat, ook al lijkt het op iemand die je kent."
+      },
+      {
+        "type": "tip",
+        "title_en": "Warning Signs",
+        "title_nl": "Waarschuwingssignalen",
+        "text_en": "• Messages from unknown numbers\n• Urgent requests for money or help\n• Links to websites or apps\n• Requests for verification codes\n• Messages that don't sound like the person you know",
+        "text_nl": "• Berichten van onbekende nummers\n• Dringende verzoeken om geld of hulp\n• Links naar websites of apps\n• Verzoeken om verificatiecodes\n• Berichten die niet klinken als de persoon die je kent"
+      },
+      {
+        "type": "example",
+        "title_en": "Real Example",
+        "title_nl": "Echt Voorbeeld",
+        "text_en": "WhatsApp: 'Hi! This is your friend. I'm in trouble and need money urgently. Can you send €500? I'll pay you back tomorrow.'\n\nThis is a scam! Always call the person directly to verify. Real friends won't ask for money through WhatsApp without explaining first.",
+        "text_nl": "WhatsApp: 'Hoi! Dit is je vriend. Ik zit in de problemen en heb dringend geld nodig. Kun je €500 sturen? Ik betaal je morgen terug.'\n\nDit is oplichting! Bel de persoon altijd direct om te verifiëren. Echte vrienden vragen niet om geld via WhatsApp zonder eerst uit te leggen."
+      }
+    ],
+    "content_nl": [
+      {
+        "type": "text",
+        "title_en": null,
+        "title_nl": null,
+        "text_en": "WhatsApp scams are becoming very common. Criminals send messages through WhatsApp pretending to be friends, family, or companies you know.",
+        "text_nl": "WhatsApp oplichting wordt steeds vaker voor. Criminelen sturen berichten via WhatsApp en doen zich voor als vrienden, familie of bedrijven die je kent."
+      },
+      {
+        "type": "text",
+        "title_en": null,
+        "title_nl": null,
+        "text_en": "They might ask for money, personal information, or ask you to click links. Always verify who you're talking to, even if it looks like someone you know.",
+        "text_nl": "Ze kunnen om geld vragen, persoonlijke informatie vragen of je vragen om op links te klikken. Verifieer altijd met wie je praat, ook al lijkt het op iemand die je kent."
+      },
+      {
+        "type": "tip",
+        "title_en": "Warning Signs",
+        "title_nl": "Waarschuwingssignalen",
+        "text_en": "• Messages from unknown numbers\n• Urgent requests for money or help\n• Links to websites or apps\n• Requests for verification codes\n• Messages that don't sound like the person you know",
+        "text_nl": "• Berichten van onbekende nummers\n• Dringende verzoeken om geld of hulp\n• Links naar websites of apps\n• Verzoeken om verificatiecodes\n• Berichten die niet klinken als de persoon die je kent"
+      },
+      {
+        "type": "example",
+        "title_en": "Real Example",
+        "title_nl": "Echt Voorbeeld",
+        "text_en": "WhatsApp: 'Hi! This is your friend. I'm in trouble and need money urgently. Can you send €500? I'll pay you back tomorrow.'\n\nThis is a scam! Always call the person directly to verify. Real friends won't ask for money through WhatsApp without explaining first.",
+        "text_nl": "WhatsApp: 'Hoi! Dit is je vriend. Ik zit in de problemen en heb dringend geld nodig. Kun je €500 sturen? Ik betaal je morgen terug.'\n\nDit is oplichting! Bel de persoon altijd direct om te verifiëren. Echte vrienden vragen niet om geld via WhatsApp zonder eerst uit te leggen."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title_en": "How to Protect Yourself",
+    "title_nl": "Hoe Jezelf te Beschermen",
+    "icon": "shield.fill",
+    "color_name": "purple",
+    "content_en": [
+      {
+        "type": "text",
+        "title_en": null,
+        "title_nl": null,
+        "text_en": "Here are simple rules to protect yourself from phishing:",
+        "text_nl": "Hier zijn eenvoudige regels om jezelf te beschermen tegen phishing:"
+      },
+      {
+        "type": "tip",
+        "title_en": "Protection Tips",
+        "title_nl": "Beschermingstips",
+        "text_en": "1. Never click links in unexpected messages\n2. Check the sender's email address or phone number carefully\n3. Real companies never ask for passwords by email or text\n4. When in doubt, contact the company directly using their official website or phone number\n5. Look for urgent or threatening language - this is often a sign of phishing\n6. Check for spelling and grammar mistakes\n7. Never share personal information unless you're 100% sure it's safe",
+        "text_nl": "1. Klik nooit op links in onverwachte berichten\n2. Controleer het e-mailadres of telefoonnummer van de afzender zorgvuldig\n3. Echte bedrijven vragen nooit om wachtwoorden via e-mail of tekst\n4. Bij twijfel, neem direct contact op met het bedrijf via hun officiële website of telefoonnummer\n5. Let op dringende of bedreigende taal - dit is vaak een teken van phishing\n6. Controleer op spelfouten en grammaticafouten\n7. Deel nooit persoonlijke informatie tenzij je 100% zeker weet dat het veilig is"
+      },
+      {
+        "type": "text",
+        "title_en": null,
+        "title_nl": null,
+        "text_en": "Remember: If something seems too urgent or too good to be true, it probably is. Take your time and verify before you act.",
+        "text_nl": "Onthoud: Als iets te dringend of te mooi lijkt om waar te zijn, is het dat waarschijnlijk ook. Neem de tijd en verifieer voordat je handelt."
+      }
+    ],
+    "content_nl": [
+      {
+        "type": "text",
+        "title_en": null,
+        "title_nl": null,
+        "text_en": "Here are simple rules to protect yourself from phishing:",
+        "text_nl": "Hier zijn eenvoudige regels om jezelf te beschermen tegen phishing:"
+      },
+      {
+        "type": "tip",
+        "title_en": "Protection Tips",
+        "title_nl": "Beschermingstips",
+        "text_en": "1. Never click links in unexpected messages\n2. Check the sender's email address or phone number carefully\n3. Real companies never ask for passwords by email or text\n4. When in doubt, contact the company directly using their official website or phone number\n5. Look for urgent or threatening language - this is often a sign of phishing\n6. Check for spelling and grammar mistakes\n7. Never share personal information unless you're 100% sure it's safe",
+        "text_nl": "1. Klik nooit op links in onverwachte berichten\n2. Controleer het e-mailadres of telefoonnummer van de afzender zorgvuldig\n3. Echte bedrijven vragen nooit om wachtwoorden via e-mail of tekst\n4. Bij twijfel, neem direct contact op met het bedrijf via hun officiële website of telefoonnummer\n5. Let op dringende taal of bedreigende taal - dit is vaak een teken van phishing\n6. Controleer op spelfouten en grammaticafouten\n7. Deel nooit persoonlijke informatie tenzij je 100% zeker weet dat het veilig is"
+      },
+      {
+        "type": "text",
+        "title_en": null,
+        "title_nl": null,
+        "text_en": "Remember: If something seems too urgent or too good to be true, it probably is. Take your time and verify before you act.",
+        "text_nl": "Onthoud: Als iets te dringend of te mooi lijkt om waar te zijn, is het dat waarschijnlijk ook. Neem de tijd en verifieer voordat je handelt."
+      }
+    ]
+  }
+]
+

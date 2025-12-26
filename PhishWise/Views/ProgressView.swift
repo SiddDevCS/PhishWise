@@ -76,22 +76,24 @@ struct PhishWiseProgressView: View {
                     .padding(.horizontal)
                     
                     // Action Buttons
-                    VStack(spacing: 16) {
+                    VStack(spacing: 20) {
                         Button(action: {
                             appViewModel.startQuiz()
                         }) {
                             HStack {
                                 Image(systemName: "arrow.clockwise")
-                                    .font(.title2)
+                                    .font(.title)
                                 Text("restart".localized)
-                                    .font(.title2)
-                                    .fontWeight(.semibold)
+                                    .font(.title)
+                                    .fontWeight(.bold)
                             }
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
-                            .padding()
+                            .frame(minHeight: 70)
+                            .padding(.horizontal, 24)
+                            .padding(.vertical, 20)
                             .background(Color.blue)
-                            .cornerRadius(12)
+                            .cornerRadius(16)
                         }
                         .accessibilityLabel("accessibility_quiz_button".localized)
                         
@@ -100,16 +102,18 @@ struct PhishWiseProgressView: View {
                         }) {
                             HStack {
                                 Image(systemName: "book.fill")
-                                    .font(.title2)
+                                    .font(.title)
                                 Text("lessons".localized)
-                                    .font(.title2)
-                                    .fontWeight(.semibold)
+                                    .font(.title)
+                                    .fontWeight(.bold)
                             }
                             .foregroundColor(.blue)
                             .frame(maxWidth: .infinity)
-                            .padding()
+                            .frame(minHeight: 70)
+                            .padding(.horizontal, 24)
+                            .padding(.vertical, 20)
                             .background(Color.blue.opacity(0.1))
-                            .cornerRadius(12)
+                            .cornerRadius(16)
                         }
                         .accessibilityLabel("accessibility_lesson_button".localized)
                     }
@@ -125,6 +129,10 @@ struct PhishWiseProgressView: View {
                     Button("back".localized) {
                         appViewModel.navigateTo(.welcome)
                     }
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 8)
                 }
             }
         }

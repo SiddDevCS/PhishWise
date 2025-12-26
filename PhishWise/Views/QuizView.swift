@@ -86,31 +86,34 @@ struct QuizView: View {
                                 // Question Content
                                 VStack(spacing: 20) {
                                     Text(question.text(for: appViewModel.currentLanguage))
-                                        .font(.title3)
+                                        .font(.title2)
+                                        .lineSpacing(6)
                                         .multilineTextAlignment(.leading)
-                                        .padding()
+                                        .padding(20)
                                         .background(Color(.systemGray6))
-                                        .cornerRadius(12)
+                                        .cornerRadius(16)
                                         .accessibilityLabel("Question content")
                                     
                                     // Answer Buttons
-                                    VStack(spacing: 16) {
+                                    VStack(spacing: 20) {
                                         Button(action: {
                                             quizVM.selectAnswer(true)
                                             showingFeedback = true
                                         }) {
                                             HStack {
                                                 Image(systemName: "checkmark.circle.fill")
-                                                    .font(.title2)
+                                                    .font(.title)
                                                 Text("yes".localized)
-                                                    .font(.title2)
-                                                    .fontWeight(.semibold)
+                                                    .font(.title)
+                                                    .fontWeight(.bold)
                                                 Spacer()
                                             }
                                             .foregroundColor(.white)
-                                            .padding()
+                                            .frame(minHeight: 70)
+                                            .padding(.horizontal, 24)
+                                            .padding(.vertical, 20)
                                             .background(Color.red)
-                                            .cornerRadius(12)
+                                            .cornerRadius(16)
                                         }
                                         .accessibilityLabel("accessibility_yes_button".localized)
                                         
@@ -120,16 +123,18 @@ struct QuizView: View {
                                         }) {
                                             HStack {
                                                 Image(systemName: "xmark.circle.fill")
-                                                    .font(.title2)
+                                                    .font(.title)
                                                 Text("no".localized)
-                                                    .font(.title2)
-                                                    .fontWeight(.semibold)
+                                                    .font(.title)
+                                                    .fontWeight(.bold)
                                                 Spacer()
                                             }
                                             .foregroundColor(.white)
-                                            .padding()
+                                            .frame(minHeight: 70)
+                                            .padding(.horizontal, 24)
+                                            .padding(.vertical, 20)
                                             .background(Color.green)
-                                            .cornerRadius(12)
+                                            .cornerRadius(16)
                                         }
                                         .accessibilityLabel("accessibility_no_button".localized)
                                     }
@@ -149,6 +154,10 @@ struct QuizView: View {
                     Button("back".localized) {
                         appViewModel.navigateTo(.welcome)
                     }
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 8)
                 }
             }
         }
@@ -239,31 +248,35 @@ struct QuizCompleteView: View {
             Spacer()
             
             // Action Buttons
-            VStack(spacing: 16) {
+            VStack(spacing: 20) {
                 Button(action: {
                     appViewModel.navigateTo(.certificate)
                 }) {
                     Text("get_certificate".localized)
-                        .font(.title2)
-                        .fontWeight(.semibold)
+                        .font(.title)
+                        .fontWeight(.bold)
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
-                        .padding()
+                        .frame(minHeight: 70)
+                        .padding(.horizontal, 24)
+                        .padding(.vertical, 20)
                         .background(Color.blue)
-                        .cornerRadius(12)
+                        .cornerRadius(16)
                 }
                 
                 Button(action: {
                     quizViewModel.resetQuiz()
                 }) {
                     Text("restart".localized)
-                        .font(.title2)
-                        .fontWeight(.semibold)
+                        .font(.title)
+                        .fontWeight(.bold)
                         .foregroundColor(.blue)
                         .frame(maxWidth: .infinity)
-                        .padding()
+                        .frame(minHeight: 70)
+                        .padding(.horizontal, 24)
+                        .padding(.vertical, 20)
                         .background(Color.blue.opacity(0.1))
-                        .cornerRadius(12)
+                        .cornerRadius(16)
                 }
             }
             .padding(.horizontal)

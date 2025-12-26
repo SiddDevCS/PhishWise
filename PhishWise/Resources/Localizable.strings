@@ -98,3 +98,15 @@
 "accessibility_progress_button" = "View progress";
 "accessibility_yes_button" = "Yes, this is phishing";
 "accessibility_no_button" = "No, this is not phishing";
+
+// MARK: - Tips
+"tips_title" = "💡 Tips to Remember:";
+"tip_check_sender" = "Always check the sender's email address or phone number carefully";
+"tip_urgent_language" = "Be suspicious of urgent or threatening language";
+"tip_check_links" = "Check links carefully - real companies use their official domain names";
+"tip_contact_directly" = "When in doubt, contact the company directly using their official website or phone number";
+"tip_never_share_password" = "Never share passwords or personal information by email or text";
+
+// MARK: - Loading
+"loading_lessons" = "Loading lessons...";
+"error_loading_lessons" = "Error loading lessons";

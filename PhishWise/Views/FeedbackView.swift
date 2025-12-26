@@ -48,15 +48,17 @@ struct FeedbackView: View {
                         
                         Text(question.text(for: appViewModel.currentLanguage))
                             .font(.body)
-                            .padding()
+                            .lineSpacing(4)
+                            .padding(16)
                             .background(Color(.systemGray6))
                             .cornerRadius(12)
                             .accessibilityLabel("Question content")
                         
                         Text(question.explanation(for: appViewModel.currentLanguage))
                             .font(.body)
+                            .lineSpacing(4)
                             .multilineTextAlignment(.leading)
-                            .padding()
+                            .padding(16)
                             .background(isCorrect ? Color.green.opacity(0.1) : Color.red.opacity(0.1))
                             .cornerRadius(12)
                             .accessibilityLabel("Answer explanation")
@@ -65,18 +67,19 @@ struct FeedbackView: View {
                     
                     // Additional Tips
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("💡 Tips:")
-                            .font(.headline)
-                            .fontWeight(.semibold)
+                        Text("tips_title".localized)
+                            .font(.title3)
+                            .fontWeight(.bold)
                         
-                        VStack(alignment: .leading, spacing: 8) {
-                            TipRow(icon: "magnifyingglass", text: "Check the sender's email address carefully")
-                            TipRow(icon: "exclamationmark.triangle", text: "Look for urgent or threatening language")
-                            TipRow(icon: "link", text: "Hover over links before clicking")
-                            TipRow(icon: "envelope", text: "When in doubt, contact the company directly")
+                        VStack(alignment: .leading, spacing: 12) {
+                            TipRow(icon: "magnifyingglass", text: "tip_check_sender".localized)
+                            TipRow(icon: "exclamationmark.triangle", text: "tip_urgent_language".localized)
+                            TipRow(icon: "link", text: "tip_check_links".localized)
+                            TipRow(icon: "envelope", text: "tip_contact_directly".localized)
+                            TipRow(icon: "lock.shield", text: "tip_never_share_password".localized)
                         }
                     }
-                    .padding()
+                    .padding(20)
                     .background(Color.blue.opacity(0.1))
                     .cornerRadius(12)
                     .padding(.horizontal)
@@ -97,8 +100,11 @@ struct FeedbackView: View {
                             dismiss()
                         }
                     }
-                    .font(.headline)
+                    .font(.title3)
+                    .fontWeight(.semibold)
                     .foregroundColor(.blue)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 8)
                 }
             }
         }
@@ -113,12 +119,13 @@ struct TipRow: View {
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
             Image(systemName: icon)
-                .font(.caption)
+                .font(.title3)
                 .foregroundColor(.blue)
-                .frame(width: 20)
+                .frame(width: 30)
             
             Text(text)
                 .font(.body)
+                .lineSpacing(4)
                 .multilineTextAlignment(.leading)
             
             Spacer()

@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   PhishWise
   
@@ -98,3 +98,15 @@
 "accessibility_progress_button" = "Bekijk voortgang";
 "accessibility_yes_button" = "Ja, dit is phishing";
 "accessibility_no_button" = "Nee, dit is geen phishing";
+
+// MARK: - Tips
+"tips_title" = "💡 Tips om te Onthouden:";
+"tip_check_sender" = "Controleer altijd het e-mailadres of telefoonnummer van de afzender zorgvuldig";
+"tip_urgent_language" = "Wees wantrouwig bij dringende of bedreigende taal";
+"tip_check_links" = "Controleer links zorgvuldig - echte bedrijven gebruiken hun officiële domeinnamen";
+"tip_contact_directly" = "Bij twijfel, neem direct contact op met het bedrijf via hun officiële website of telefoonnummer";
+"tip_never_share_password" = "Deel nooit wachtwoorden of persoonlijke informatie via e-mail of tekst";
+
+// MARK: - Loading
+"loading_lessons" = "Lessen laden...";
+"error_loading_lessons" = "Fout bij laden lessen";
