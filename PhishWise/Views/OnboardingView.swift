@@ -158,6 +158,7 @@ struct NameInputView: View {
     @Binding var showNameInput: Bool
     let onContinue: () -> Void
     @FocusState private var isTextFieldFocused: Bool
+    private let maxCharacters = 15
     
     var body: some View {
         ScrollView {
@@ -193,7 +194,15 @@ struct NameInputView: View {
                 
                 // Name Input Field
                 VStack(spacing: 16) {
-                    TextField("onboarding_name_placeholder".localized, text: $userName)
+                    TextField("onboarding_name_placeholder".localized, text: Binding(
+                        get: { userName },
+                        set: { newValue in
+                            // Limit to maxCharacters
+                            if newValue.count <= maxCharacters {
+                                userName = newValue
+                            }
+                        }
+                    ))
                         .font(.title2)
                         .padding(20)
                         .background(Color(.systemGray6))
@@ -209,6 +218,15 @@ struct NameInputView: View {
                                 onContinue()
                             }
                         }
+                    
+                    // Character count indicator
+                    HStack {
+                        Spacer()
+                        Text("\(userName.count)/\(maxCharacters)")
+                            .font(.caption)
+                            .foregroundColor(userName.count >= maxCharacters ? .red : .secondary)
+                    }
+                    .padding(.horizontal, 4)
                     
                     // Skip Option
                     Button(action: {
