@@ -17,21 +17,22 @@ class QuizViewModel: ObservableObject {
     @Published var isCorrect: Bool = false
     @Published var quizCompleted: Bool = false
     
-    private let questions: [Question]
+    let questions: [Question]
     private var correctAnswers: Int = 0
     
-    init(questions: [Question]) {
+    init(questions: [Question] = []) {
         self.questions = questions
     }
     
     // MARK: - Computed Properties
     var currentQuestion: Question? {
-        guard currentQuestionIndex < questions.count else { return nil }
+        guard !questions.isEmpty, currentQuestionIndex < questions.count else { return nil }
         return questions[currentQuestionIndex]
     }
     
     var isLastQuestion: Bool {
-        currentQuestionIndex >= questions.count - 1
+        guard !questions.isEmpty else { return false }
+        return currentQuestionIndex >= questions.count - 1
     }
     
     var progress: Double {

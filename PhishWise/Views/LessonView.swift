@@ -105,7 +105,7 @@ struct LessonCardView: View {
         VStack(alignment: .leading, spacing: 20) {
             // Card Header
             Button(action: {
-                withAnimation(.easeInOut(duration: 0.3)) {
+                withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
                     isExpanded.toggle()
                 }
             }) {
@@ -123,9 +123,10 @@ struct LessonCardView: View {
                     
                     Spacer()
                     
-                    Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
+                    Image(systemName: "chevron.down")
                         .font(.title3)
                         .foregroundColor(.secondary)
+                        .rotationEffect(.degrees(isExpanded ? 180 : 0))
                 }
             }
             .buttonStyle(PlainButtonStyle())
@@ -137,7 +138,10 @@ struct LessonCardView: View {
                         LessonSectionView(section: section, language: appViewModel.currentLanguage, color: lesson.color)
                     }
                 }
-                .transition(.opacity.combined(with: .move(edge: .top)))
+                .transition(.asymmetric(
+                    insertion: .opacity.combined(with: .move(edge: .top)),
+                    removal: .opacity
+                ))
             }
         }
         .padding(20)

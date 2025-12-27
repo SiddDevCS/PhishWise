@@ -8,6 +8,8 @@
 // MARK: - Welcome Screen
 "welcome_title" = "Welkom bij PhishWise";
 "welcome_subtitle" = "Leer phishing pogingen herkennen en bescherm jezelf online";
+"welcome_instruction_learn" = "Begin met de lessen om over phishing te leren";
+"welcome_instruction_quiz" = "Doe daarna de quiz om te oefenen wat je hebt geleerd";
 "start_learning" = "Begin met Leren";
 "language_settings" = "Taal Instellingen";
 

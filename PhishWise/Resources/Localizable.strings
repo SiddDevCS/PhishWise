@@ -8,6 +8,8 @@
 // MARK: - Welcome Screen
 "welcome_title" = "Welcome to PhishWise";
 "welcome_subtitle" = "Learn to recognize phishing attempts and protect yourself online";
+"welcome_instruction_learn" = "Start with the lessons to learn about phishing";
+"welcome_instruction_quiz" = "Then take the quiz to practice what you learned";
 "start_learning" = "Start Learning";
 "language_settings" = "Language Settings";
 

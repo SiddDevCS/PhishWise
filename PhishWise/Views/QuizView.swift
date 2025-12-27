@@ -145,6 +145,7 @@ struct QuizView: View {
                             }
                         }
                     }
+                    .id(quizVM.currentQuestionIndex)
                 }
             }
             .navigationTitle("quiz".localized)
@@ -164,12 +165,12 @@ struct QuizView: View {
         .onAppear {
             if quizDataManager.questions.isEmpty {
                 quizDataManager.loadQuestions()
-            } else {
+            } else if quizViewModel == nil || quizViewModel?.questions.isEmpty == true {
                 quizViewModel = QuizViewModel(questions: quizDataManager.questions)
             }
         }
         .onChange(of: quizDataManager.questions) { newQuestions in
-            if !newQuestions.isEmpty {
+            if !newQuestions.isEmpty && (quizViewModel == nil || quizViewModel?.questions.isEmpty == true) {
                 quizViewModel = QuizViewModel(questions: newQuestions)
             }
         }
