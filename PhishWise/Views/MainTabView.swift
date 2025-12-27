@@ -59,6 +59,8 @@ struct CourseTabView: View {
                 WelcomeView(appViewModel: appViewModel)
             case .lessons:
                 LessonView(appViewModel: appViewModel)
+            case .quizOverview:
+                QuizOverviewView(appViewModel: appViewModel)
             case .quiz:
                 QuizView(appViewModel: appViewModel)
             case .feedback:

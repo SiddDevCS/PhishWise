@@ -56,96 +56,12 @@ struct QuizView: View {
                     QuizCompleteView(quizViewModel: quizVM, appViewModel: appViewModel)
                 } else if let quizVM = quizViewModel, let question = quizVM.currentQuestion {
                     // Quiz Question
-                    VStack(spacing: 0) {
-                        // Progress Bar
-                        ProgressView(value: quizVM.progress)
-                            .progressViewStyle(LinearProgressViewStyle(tint: .blue))
-                            .scaleEffect(x: 1, y: 2, anchor: .center)
-                            .padding(.horizontal)
-                            .padding(.top, 8)
-                        
-                        ScrollView {
-                            VStack(spacing: 24) {
-                                // Question Header
-                                VStack(spacing: 16) {
-                                    Text(String(format: "question_number".localized, 
-                                              quizVM.currentQuestionIndex + 1, 
-                                              quizVM.totalQuestions))
-                                        .font(.headline)
-                                        .foregroundColor(.secondary)
-                                    
-                        Text("is_this_phishing".localized)
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .multilineTextAlignment(.center)
-                            .accessibilityAddTraits(.isHeader)
-                            .accessibilityHeading(.h2)
-                                }
-                                .padding(.top, 20)
-                                
-                                // Question Content
-                                VStack(spacing: 20) {
-                                    Text(question.text(for: appViewModel.currentLanguage))
-                                        .font(.title2)
-                                        .lineSpacing(6)
-                                        .multilineTextAlignment(.leading)
-                                        .padding(20)
-                                        .background(Color(.systemGray6))
-                                        .cornerRadius(16)
-                                        .accessibilityLabel("Question content")
-                                    
-                                    // Answer Buttons
-                                    VStack(spacing: 20) {
-                                        Button(action: {
-                                            quizVM.selectAnswer(true)
-                                            showingFeedback = true
-                                        }) {
-                                            HStack {
-                                                Image(systemName: "checkmark.circle.fill")
-                                                    .font(.title)
-                                                Text("yes".localized)
-                                                    .font(.title)
-                                                    .fontWeight(.bold)
-                                                Spacer()
-                                            }
-                                            .foregroundColor(.white)
-                                            .frame(minHeight: 70)
-                                            .padding(.horizontal, 24)
-                                            .padding(.vertical, 20)
-                                            .background(Color.red)
-                                            .cornerRadius(16)
-                                        }
-                                        .accessibilityLabel("accessibility_yes_button".localized)
-                                        
-                                        Button(action: {
-                                            quizVM.selectAnswer(false)
-                                            showingFeedback = true
-                                        }) {
-                                            HStack {
-                                                Image(systemName: "xmark.circle.fill")
-                                                    .font(.title)
-                                                Text("no".localized)
-                                                    .font(.title)
-                                                    .fontWeight(.bold)
-                                                Spacer()
-                                            }
-                                            .foregroundColor(.white)
-                                            .frame(minHeight: 70)
-                                            .padding(.horizontal, 24)
-                                            .padding(.vertical, 20)
-                                            .background(Color.green)
-                                            .cornerRadius(16)
-                                        }
-                                        .accessibilityLabel("accessibility_no_button".localized)
-                                    }
-                                }
-                                .padding(.horizontal)
-                                
-                                Spacer(minLength: 50)
-                            }
-                        }
-                    }
-                    .id(quizVM.currentQuestionIndex)
+                    QuizQuestionView(
+                        quizViewModel: quizVM,
+                        question: question,
+                        appViewModel: appViewModel,
+                        showingFeedback: $showingFeedback
+                    )
                 }
             }
             .navigationTitle("quiz".localized)
@@ -174,6 +90,12 @@ struct QuizView: View {
                 quizViewModel = QuizViewModel(questions: newQuestions)
             }
         }
+        .onChange(of: showingFeedback) { isShowing in
+            // Force view update when feedback sheet is dismissed
+            if !isShowing {
+                // Trigger view update
+            }
+        }
         .sheet(isPresented: $showingFeedback) {
             if let quizVM = quizViewModel, let question = quizVM.currentQuestion {
                 FeedbackView(
@@ -181,10 +103,114 @@ struct QuizView: View {
                     selectedAnswer: quizVM.selectedAnswer ?? false,
                     isCorrect: quizVM.isCorrect,
                     appViewModel: appViewModel,
-                    quizViewModel: quizVM
+                    quizViewModel: quizVM,
+                    onContinue: {
+                        // This will be called after dismiss
+                    }
                 )
             }
         }
+    }
+}
+
+// MARK: - Quiz Question View
+struct QuizQuestionView: View {
+    @ObservedObject var quizViewModel: QuizViewModel
+    let question: Question
+    @ObservedObject var appViewModel: AppViewModel
+    @Binding var showingFeedback: Bool
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            // Progress Bar
+            ProgressView(value: quizViewModel.progress)
+                .progressViewStyle(LinearProgressViewStyle(tint: .blue))
+                .scaleEffect(x: 1, y: 2, anchor: .center)
+                .padding(.horizontal)
+                .padding(.top, 8)
+            
+            ScrollView {
+                VStack(spacing: 24) {
+                    // Question Header
+                    VStack(spacing: 16) {
+                        Text(String(format: "question_number".localized, 
+                                  quizViewModel.currentQuestionIndex + 1, 
+                                  quizViewModel.totalQuestions))
+                            .font(.headline)
+                            .foregroundColor(.secondary)
+                        
+                        Text("is_this_phishing".localized)
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .multilineTextAlignment(.center)
+                            .accessibilityAddTraits(.isHeader)
+                            .accessibilityHeading(.h2)
+                    }
+                    .padding(.top, 20)
+                    
+                    // Question Content
+                    VStack(spacing: 20) {
+                        Text(question.text(for: appViewModel.currentLanguage))
+                            .font(.title2)
+                            .lineSpacing(6)
+                            .multilineTextAlignment(.leading)
+                            .padding(20)
+                            .background(Color(.systemGray6))
+                            .cornerRadius(16)
+                            .accessibilityLabel("Question content")
+                        
+                        // Answer Buttons
+                        VStack(spacing: 20) {
+                            Button(action: {
+                                quizViewModel.selectAnswer(true)
+                                showingFeedback = true
+                            }) {
+                                HStack {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .font(.title)
+                                    Text("yes".localized)
+                                        .font(.title)
+                                        .fontWeight(.bold)
+                                    Spacer()
+                                }
+                                .foregroundColor(.white)
+                                .frame(minHeight: 70)
+                                .padding(.horizontal, 24)
+                                .padding(.vertical, 20)
+                                .background(Color.blue)
+                                .cornerRadius(16)
+                            }
+                            .accessibilityLabel("accessibility_yes_button".localized)
+                            
+                            Button(action: {
+                                quizViewModel.selectAnswer(false)
+                                showingFeedback = true
+                            }) {
+                                HStack {
+                                    Image(systemName: "xmark.circle.fill")
+                                        .font(.title)
+                                    Text("no".localized)
+                                        .font(.title)
+                                        .fontWeight(.bold)
+                                    Spacer()
+                                }
+                                .foregroundColor(.white)
+                                .frame(minHeight: 70)
+                                .padding(.horizontal, 24)
+                                .padding(.vertical, 20)
+                                .background(Color.blue)
+                                .cornerRadius(16)
+                            }
+                            .accessibilityLabel("accessibility_no_button".localized)
+                        }
+                    }
+                    .padding(.horizontal)
+                    
+                    Spacer(minLength: 50)
+                }
+            }
+        }
+        .id(quizViewModel.currentQuestionIndex)
     }
 }
 

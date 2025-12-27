@@ -25,6 +25,9 @@
 "course_certificate" = "Cursus & Certificaat";
 
 // MARK: - Quiz
+"quiz_overview_subtitle" = "Oefen met het identificeren van phishing pogingen";
+"make_quiz" = "Quiz Maken";
+"see_previous_attempts" = "Bekijk Vorige Pogingen";
 "question_number" = "Vraag %d van %d";
 "is_this_phishing" = "Is dit een phishing poging?";
 "yes" = "Ja";

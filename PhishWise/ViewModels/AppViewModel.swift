@@ -44,6 +44,14 @@ class AppViewModel: ObservableObject {
         currentQuestionIndex = 0
         selectedAnswer = nil
         showFeedback = false
+        navigateTo(.quizOverview)
+    }
+    
+    func beginNewQuiz() {
+        quizScore = 0
+        currentQuestionIndex = 0
+        selectedAnswer = nil
+        showFeedback = false
         navigateTo(.quiz)
     }
     
@@ -128,6 +136,7 @@ class AppViewModel: ObservableObject {
 enum AppView {
     case welcome
     case lessons
+    case quizOverview
     case quiz
     case feedback
     case progress

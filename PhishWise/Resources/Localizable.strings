@@ -25,6 +25,9 @@
 "course_certificate" = "Course & Certificate";
 
 // MARK: - Quiz
+"quiz_overview_subtitle" = "Practice identifying phishing attempts";
+"make_quiz" = "Make Quiz";
+"see_previous_attempts" = "See Previous Attempts";
 "question_number" = "Question %d of %d";
 "is_this_phishing" = "Is this a phishing attempt?";
 "yes" = "Yes";

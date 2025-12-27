@@ -15,6 +15,7 @@ struct FeedbackView: View {
     let isCorrect: Bool
     @ObservedObject var appViewModel: AppViewModel
     @ObservedObject var quizViewModel: QuizViewModel
+    let onContinue: () -> Void
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -92,13 +93,9 @@ struct FeedbackView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("continue".localized) {
-                        if quizViewModel.isLastQuestion {
-                            quizViewModel.nextQuestion()
-                            dismiss()
-                        } else {
-                            quizViewModel.nextQuestion()
-                            dismiss()
-                        }
+                        quizViewModel.nextQuestion()
+                        onContinue()
+                        dismiss()
                     }
                     .font(.title3)
                     .fontWeight(.semibold)
@@ -149,6 +146,7 @@ struct TipRow: View {
         selectedAnswer: true,
         isCorrect: true,
         appViewModel: AppViewModel(),
-        quizViewModel: QuizViewModel(questions: [])
+        quizViewModel: QuizViewModel(questions: []),
+        onContinue: {}
     )
 }
