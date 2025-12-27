@@ -13,7 +13,7 @@ struct CertificateView: View {
     @ObservedObject var appViewModel: AppViewModel
     @State private var userName = ""
     @State private var showingCertificate = false
-    @State private var certificate: Certificate?
+    @State private var certificate: Certificate? 
     
     var body: some View {
         NavigationView {
