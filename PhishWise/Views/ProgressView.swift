@@ -12,114 +12,166 @@ import SwiftUI
 struct PhishWiseProgressView: View {
     @ObservedObject var appViewModel: AppViewModel
     @StateObject private var quizDataManager = QuizDataManager()
+    @ObservedObject private var attemptManager = QuizAttemptManager.shared
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(spacing: 24) {
-                    // Header
+            VStack(spacing: 0) {
+                ScrollView {
                     VStack(spacing: 16) {
-                        Image(systemName: "chart.bar.fill")
-                            .font(.system(size: 60))
-                            .foregroundColor(.blue)
-                            .accessibilityLabel("Progress Icon")
-                        
-                        Text("progress".localized)
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .multilineTextAlignment(.center)
-                            .accessibilityAddTraits(.isHeader)
-                    }
-                    .padding(.top, 20)
-                    
-                    // Progress Stats
-                    VStack(spacing: 20) {
-                        // Overall Score Card
-                        ProgressCard(
-                            title: "Overall Score",
-                            titleNl: "Algemene Score",
-                            value: "\(appViewModel.quizScore)",
-                            subtitle: "out of \(appViewModel.totalQuestions)",
-                            subtitleNl: "van \(appViewModel.totalQuestions)",
-                            icon: "star.fill",
-                            color: .orange,
-                            appViewModel: appViewModel
-                        )
-                        
-                        // Accuracy Card
-                        let accuracy = appViewModel.totalQuestions > 0 ? 
-                            Double(appViewModel.quizScore) / Double(appViewModel.totalQuestions) * 100 : 0
-                        
-                        ProgressCard(
-                            title: "Accuracy",
-                            titleNl: "Nauwkeurigheid",
-                            value: String(format: "%.0f%%", accuracy),
-                            subtitle: "Correct answers",
-                            subtitleNl: "Correcte antwoorden",
-                            icon: "target",
-                            color: .green,
-                            appViewModel: appViewModel
-                        )
-                        
-                        // Questions Completed Card
-                        ProgressCard(
-                            title: "Questions Completed",
-                            titleNl: "Vragen Voltooid",
-                            value: "\(appViewModel.totalQuestions)",
-                            subtitle: "Total questions",
-                            subtitleNl: "Totaal vragen",
-                            icon: "questionmark.circle.fill",
-                            color: .blue,
-                            appViewModel: appViewModel
-                        )
-                    }
-                    .padding(.horizontal)
-                    
-                    // Action Buttons
-                    VStack(spacing: 20) {
-                        Button(action: {
-                            appViewModel.startQuiz()
-                        }) {
-                            HStack {
-                                Image(systemName: "arrow.clockwise")
-                                    .font(.title)
-                                Text("restart".localized)
-                                    .font(.title)
-                                    .fontWeight(.bold)
-                            }
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .frame(minHeight: 70)
-                            .padding(.horizontal, 24)
-                            .padding(.vertical, 20)
-                            .background(Color.blue)
-                            .cornerRadius(16)
+                        // Header
+                        VStack(spacing: 12) {
+                            Image(systemName: "chart.bar.fill")
+                                .font(.system(size: 50))
+                                .foregroundColor(.blue)
+                                .accessibilityLabel("Progress Icon")
+                            
+                            Text("progress".localized)
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.center)
+                                .accessibilityAddTraits(.isHeader)
                         }
-                        .accessibilityLabel("accessibility_quiz_button".localized)
+                        .padding(.top, 10)
                         
-                        Button(action: {
-                            appViewModel.navigateTo(.lessons)
-                        }) {
-                            HStack {
-                                Image(systemName: "book.fill")
-                                    .font(.title)
-                                Text("lessons".localized)
-                                    .font(.title)
+                        // Most Recent Attempt Section
+                        if let recentAttempt = attemptManager.mostRecentAttempt {
+                            VStack(alignment: .leading, spacing: 12) {
+                                Text("last_attempt".localized)
+                                    .font(.title3)
                                     .fontWeight(.bold)
+                                    .padding(.horizontal)
+                                
+                                VStack(spacing: 12) {
+                                    // Score Card
+                                    ProgressCard(
+                                        title: "last_attempt_score".localized,
+                                        titleNl: "Laatste Poging Score",
+                                        value: "\(recentAttempt.score)",
+                                        subtitle: String(format: "last_attempt_out_of".localized, recentAttempt.totalQuestions),
+                                        subtitleNl: String(format: "last_attempt_out_of_nl".localized, recentAttempt.totalQuestions),
+                                        icon: "star.fill",
+                                        color: .orange,
+                                        appViewModel: appViewModel
+                                    )
+                                    
+                                    // Percentage Card
+                                    ProgressCard(
+                                        title: "last_attempt_percentage".localized,
+                                        titleNl: "Laatste Poging Percentage",
+                                        value: String(format: "%.0f%%", recentAttempt.scorePercentage),
+                                        subtitle: recentAttempt.formattedDate,
+                                        subtitleNl: recentAttempt.formattedDate,
+                                        icon: "percent",
+                                        color: .blue,
+                                        appViewModel: appViewModel
+                                    )
+                                }
+                                .padding(.horizontal)
                             }
-                            .foregroundColor(.blue)
-                            .frame(maxWidth: .infinity)
-                            .frame(minHeight: 70)
-                            .padding(.horizontal, 24)
-                            .padding(.vertical, 20)
-                            .background(Color.blue.opacity(0.1))
-                            .cornerRadius(16)
+                        } else {
+                            // No attempts yet
+                            VStack(spacing: 12) {
+                                Image(systemName: "clock.badge.questionmark")
+                                    .font(.system(size: 40))
+                                    .foregroundColor(.secondary)
+                                
+                                Text("no_attempts_yet".localized)
+                                    .font(.body)
+                                    .foregroundColor(.secondary)
+                                    .multilineTextAlignment(.center)
+                            }
+                            .padding(.vertical, 8)
                         }
-                        .accessibilityLabel("accessibility_lesson_button".localized)
+                        
+                        // Progress Stats
+                        VStack(spacing: 12) {
+                            // Overall Score Card
+                            ProgressCard(
+                                title: "Overall Score",
+                                titleNl: "Algemene Score",
+                                value: "\(appViewModel.quizScore)",
+                                subtitle: "out of \(appViewModel.totalQuestions)",
+                                subtitleNl: "van \(appViewModel.totalQuestions)",
+                                icon: "star.fill",
+                                color: .orange,
+                                appViewModel: appViewModel
+                            )
+                            
+                            // Accuracy Card
+                            let accuracy = appViewModel.totalQuestions > 0 ? 
+                                Double(appViewModel.quizScore) / Double(appViewModel.totalQuestions) * 100 : 0
+                            
+                            ProgressCard(
+                                title: "Accuracy",
+                                titleNl: "Nauwkeurigheid",
+                                value: String(format: "%.0f%%", accuracy),
+                                subtitle: "Correct answers",
+                                subtitleNl: "Correcte antwoorden",
+                                icon: "target",
+                                color: .green,
+                                appViewModel: appViewModel
+                            )
+                            
+                            // Questions Completed Card
+                            ProgressCard(
+                                title: "Questions Completed",
+                                titleNl: "Vragen Voltooid",
+                                value: "\(appViewModel.totalQuestions)",
+                                subtitle: "Total questions",
+                                subtitleNl: "Totaal vragen",
+                                icon: "questionmark.circle.fill",
+                                color: .blue,
+                                appViewModel: appViewModel
+                            )
+                        }
+                        .padding(.horizontal)
+                        
+                        // Action Buttons
+                        VStack(spacing: 16) {
+                            Button(action: {
+                                appViewModel.startQuiz()
+                            }) {
+                                HStack {
+                                    Image(systemName: "arrow.clockwise")
+                                        .font(.title2)
+                                    Text("restart".localized)
+                                        .font(.title2)
+                                        .fontWeight(.bold)
+                                }
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .frame(minHeight: 60)
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 16)
+                                .background(Color.blue)
+                                .cornerRadius(16)
+                            }
+                            .accessibilityLabel("accessibility_quiz_button".localized)
+                            
+                            Button(action: {
+                                appViewModel.navigateTo(.lessons)
+                            }) {
+                                HStack {
+                                    Image(systemName: "book.fill")
+                                        .font(.title2)
+                                    Text("lessons".localized)
+                                        .font(.title2)
+                                        .fontWeight(.bold)
+                                }
+                                .foregroundColor(.blue)
+                                .frame(maxWidth: .infinity)
+                                .frame(minHeight: 60)
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 16)
+                                .background(Color.blue.opacity(0.1))
+                                .cornerRadius(16)
+                            }
+                            .accessibilityLabel("accessibility_lesson_button".localized)
+                        }
+                        .padding(.horizontal)
+                        .padding(.top, 8)
                     }
-                    .padding(.horizontal)
-                    
-                    Spacer(minLength: 50)
                 }
             }
             .navigationTitle("progress".localized)
@@ -159,21 +211,21 @@ struct ProgressCard: View {
     }
     
     var body: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 12) {
             HStack {
                 Image(systemName: icon)
-                    .font(.title2)
+                    .font(.title3)
                     .foregroundColor(color)
-                    .frame(width: 30)
+                    .frame(width: 24)
                 
-                VStack(alignment: .leading, spacing: 4) {
+                VStack(alignment: .leading, spacing: 2) {
                     Text(localizedTitle)
-                        .font(.headline)
+                        .font(.body)
                         .fontWeight(.semibold)
                         .multilineTextAlignment(.leading)
                     
                     Text(localizedSubtitle)
-                        .font(.caption)
+                        .font(.caption2)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.leading)
                 }
@@ -181,14 +233,14 @@ struct ProgressCard: View {
                 Spacer()
                 
                 Text(value)
-                    .font(.largeTitle)
+                    .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(color)
             }
         }
-        .padding()
+        .padding(12)
         .background(Color(.systemGray6))
-        .cornerRadius(16)
+        .cornerRadius(12)
         .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
     }
 }

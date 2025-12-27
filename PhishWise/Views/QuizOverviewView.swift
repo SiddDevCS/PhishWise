@@ -15,13 +15,13 @@ struct QuizOverviewView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(spacing: 30) {
+                VStack(spacing: 20) {
                     Spacer()
-                        .frame(height: 40)
+                        .frame(height: 20)
                     
                     // Icon
                     Image(systemName: "questionmark.circle.fill")
-                        .font(.system(size: 80))
+                        .font(.system(size: 70))
                         .foregroundColor(.blue)
                         .accessibilityLabel("Quiz icon")
                     
@@ -41,10 +41,10 @@ struct QuizOverviewView: View {
                         .padding(.horizontal)
                     
                     Spacer()
-                        .frame(height: 30)
+                        .frame(height: 15)
                     
                     // Action Buttons
-                    VStack(spacing: 20) {
+                    VStack(spacing: 16) {
                         // Make Quiz Button
                         Button(action: {
                             appViewModel.beginNewQuiz()
@@ -90,7 +90,7 @@ struct QuizOverviewView: View {
                     .padding(.horizontal)
                     
                     Spacer()
-                        .frame(height: 40)
+                        .frame(height: 20)
                 }
                 .padding()
             }

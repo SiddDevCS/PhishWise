@@ -45,6 +45,11 @@
 "good_job" = "Goed gedaan!";
 "keep_learning" = "Blijf leren!";
 "try_again" = "Probeer opnieuw";
+"last_attempt" = "Laatste Poging";
+"last_attempt_score" = "Laatste Poging Score";
+"last_attempt_percentage" = "Laatste Poging Percentage";
+"last_attempt_out_of_nl" = "van %d";
+"no_attempts_yet" = "Nog geen quiz pogingen. Voltooi een quiz om je resultaten hier te zien.";
 
 // MARK: - Lessons
 "lesson_title" = "Leermodules";

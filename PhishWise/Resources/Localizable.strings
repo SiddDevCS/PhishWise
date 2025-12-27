@@ -45,6 +45,11 @@
 "good_job" = "Good job!";
 "keep_learning" = "Keep learning!";
 "try_again" = "Try again";
+"last_attempt" = "Last Attempt";
+"last_attempt_score" = "Last Attempt Score";
+"last_attempt_percentage" = "Last Attempt Percentage";
+"last_attempt_out_of" = "out of %d";
+"no_attempts_yet" = "No quiz attempts yet. Complete a quiz to see your results here.";
 
 // MARK: - Lessons
 "lesson_title" = "Learning Modules";

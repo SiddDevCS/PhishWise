@@ -311,6 +311,13 @@ struct QuizCompleteView: View {
             Spacer()
         }
         .padding()
+        .onAppear {
+            // Save the quiz attempt when quiz is completed
+            QuizAttemptManager.shared.saveAttempt(
+                score: quizViewModel.score,
+                totalQuestions: quizViewModel.totalQuestions
+            )
+        }
     }
 }
 
