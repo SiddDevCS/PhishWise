@@ -13,8 +13,14 @@ struct ContentView: View {
     @EnvironmentObject var appViewModel: AppViewModel
     
     var body: some View {
-        MainTabView()
-            .environmentObject(appViewModel)
+        Group {
+            if appViewModel.hasCompletedOnboarding {
+                MainTabView()
+                    .environmentObject(appViewModel)
+            } else {
+                OnboardingView(appViewModel: appViewModel)
+            }
+        }
     }
 }
 

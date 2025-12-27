@@ -110,3 +110,16 @@
 // MARK: - Loading
 "loading_lessons" = "Lessen laden...";
 "error_loading_lessons" = "Fout bij laden lessen";
+
+// MARK: - Onboarding
+"onboarding_language_title" = "Selecteer Je Taal";
+"onboarding_language_subtitle" = "Kies je voorkeurstaal voor de app";
+"onboarding_name_title" = "Wat is je naam?";
+"onboarding_name_subtitle" = "We willen je ervaring personaliseren (optioneel)";
+"onboarding_name_placeholder" = "Voer je naam in";
+"onboarding_skip_name" = "Overslaan";
+"onboarding_purpose_title" = "Welkom bij PhishWise!";
+"onboarding_purpose_learn" = "Leer over phishing door begrijpelijke lessen";
+"onboarding_purpose_practice" = "Oefen met het identificeren van phishing pogingen met interactieve oefeningen";
+"onboarding_purpose_protect" = "Bescherm jezelf tegen online oplichting en phishing aanvallen";
+"onboarding_get_started" = "Begin";

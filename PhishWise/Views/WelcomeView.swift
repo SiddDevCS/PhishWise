@@ -25,7 +25,8 @@ struct WelcomeView: View {
                     .accessibilityLabel("PhishWise App Icon")
                     .accessibilityAddTraits(.isImage)
                 
-                Text("welcome_title".localized)
+                // Personalized Greeting
+                Text(appViewModel.greeting)
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)

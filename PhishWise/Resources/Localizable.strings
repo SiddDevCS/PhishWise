@@ -110,3 +110,16 @@
 // MARK: - Loading
 "loading_lessons" = "Loading lessons...";
 "error_loading_lessons" = "Error loading lessons";
+
+// MARK: - Onboarding
+"onboarding_language_title" = "Select Your Language";
+"onboarding_language_subtitle" = "Choose your preferred language for the app";
+"onboarding_name_title" = "What's your name?";
+"onboarding_name_subtitle" = "We'd like to personalize your experience (optional)";
+"onboarding_name_placeholder" = "Enter your name";
+"onboarding_skip_name" = "Skip";
+"onboarding_purpose_title" = "Welcome to PhishWise!";
+"onboarding_purpose_learn" = "Learn about phishing through easy-to-understand lessons";
+"onboarding_purpose_practice" = "Practice identifying phishing attempts with interactive exercises";
+"onboarding_purpose_protect" = "Protect yourself from online scams and phishing attacks";
+"onboarding_get_started" = "Get Started";

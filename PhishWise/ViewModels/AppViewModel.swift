@@ -17,10 +17,21 @@ class AppViewModel: ObservableObject {
     @Published var currentQuestionIndex: Int = 0
     @Published var selectedAnswer: Bool?
     @Published var showFeedback: Bool = false
+    @Published var hasCompletedOnboarding: Bool = false
+    @Published var userName: String?
     
     // Use the shared localization helper
     var currentLanguage: Language {
         return LocalizationHelper.shared.currentLanguage
+    }
+    
+    // Computed property for greeting
+    var greeting: String {
+        if let name = userName, !name.isEmpty {
+            return currentLanguage == .dutch ? "Hoi \(name)!" : "Hi \(name)!"
+        } else {
+            return currentLanguage == .dutch ? "Hoi!" : "Hi!"
+        }
     }
     
     // MARK: - Navigation Methods
@@ -71,7 +82,37 @@ class AppViewModel: ObservableObject {
         objectWillChange.send()
     }
     
+    // MARK: - Onboarding Management
+    func saveUserName(_ name: String?) {
+        userName = name
+        if let name = name, !name.isEmpty {
+            UserDefaults.standard.set(name, forKey: "userName")
+        } else {
+            UserDefaults.standard.removeObject(forKey: "userName")
+        }
+    }
+    
+    func completeOnboarding() {
+        hasCompletedOnboarding = true
+        UserDefaults.standard.set(true, forKey: "hasCompletedOnboarding")
+    }
+    
+    func resetOnboarding() {
+        hasCompletedOnboarding = false
+        userName = nil
+        UserDefaults.standard.removeObject(forKey: "hasCompletedOnboarding")
+        UserDefaults.standard.removeObject(forKey: "userName")
+    }
+    
+    private func loadOnboardingState() {
+        hasCompletedOnboarding = UserDefaults.standard.bool(forKey: "hasCompletedOnboarding")
+        userName = UserDefaults.standard.string(forKey: "userName")
+    }
+    
     init() {
+        // Load onboarding state
+        loadOnboardingState()
+        
         // Listen for language changes
         NotificationCenter.default.addObserver(
             forName: .languageChanged,

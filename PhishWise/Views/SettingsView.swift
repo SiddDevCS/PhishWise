@@ -51,6 +51,21 @@ struct SettingsView: View {
                             .foregroundColor(.secondary)
                     }
                 }
+                
+                // Testing Section (Temporary)
+                Section(header: Text("Testing (Temporary)")) {
+                    Button(action: {
+                        appViewModel.resetOnboarding()
+                    }) {
+                        HStack {
+                            Image(systemName: "arrow.counterclockwise")
+                                .foregroundColor(.orange)
+                            Text("Reset Onboarding")
+                                .foregroundColor(.orange)
+                            Spacer()
+                        }
+                    }
+                }
             }
             .navigationTitle("settings".localized)
             .navigationBarTitleDisplayMode(.large)
