@@ -75,6 +75,12 @@ class AppViewModel: ObservableObject {
         navigateTo(.progress)
     }
     
+    // MARK: - Quiz Score Management
+    func updateQuizScore(score: Int, totalQuestions: Int) {
+        quizScore = score
+        self.totalQuestions = totalQuestions
+    }
+    
     func resetApp() {
         currentView = .welcome
         quizScore = 0

@@ -317,6 +317,11 @@ struct QuizCompleteView: View {
                 score: quizViewModel.score,
                 totalQuestions: quizViewModel.totalQuestions
             )
+            // Update AppViewModel with the quiz results
+            appViewModel.updateQuizScore(
+                score: quizViewModel.score,
+                totalQuestions: quizViewModel.totalQuestions
+            )
         }
     }
 }

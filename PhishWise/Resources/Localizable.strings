@@ -88,6 +88,12 @@
 "scan_to_verify" = "Scan this code to verify the certificate";
 "share_certificate" = "Share Certificate";
 "new_certificate" = "New Certificate";
+"save_to_photos" = "Save to Photos";
+"saved_to_photos" = "Saved to Photos";
+"certificate_saved_successfully" = "Your certificate has been saved to your photo library.";
+"error_saving" = "Error Saving";
+"ok" = "OK";
+"photo_library_permission_denied" = "Please allow photo library access in Settings to save certificates.";
 
 // MARK: - Settings
 "settings" = "Settings";

@@ -88,6 +88,12 @@
 "scan_to_verify" = "Scan deze code om het certificaat te verifiëren";
 "share_certificate" = "Deel Certificaat";
 "new_certificate" = "Nieuw Certificaat";
+"save_to_photos" = "Opslaan in Foto's";
+"saved_to_photos" = "Opgeslagen in Foto's";
+"certificate_saved_successfully" = "Uw certificaat is opgeslagen in uw fotobibliotheek.";
+"error_saving" = "Fout bij Opslaan";
+"ok" = "OK";
+"photo_library_permission_denied" = "Sta toegang tot de fotobibliotheek toe in Instellingen om certificaten op te slaan.";
 
 // MARK: - Settings
 "settings" = "Instellingen";
