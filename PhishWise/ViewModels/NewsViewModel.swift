@@ -9,70 +9,94 @@ import Foundation
 import SwiftUI
 
 // MARK: - News View Model
-/// Manages news-specific state and logic
+/// Manages news state and loads from the Fly API. Holds @Published so the view updates when loading completes or fails.
 class NewsViewModel: ObservableObject {
-    @Published var selectedArticle: NewsArticle?
+    @Published var digest: DailyDigest?
+    @Published var isLoading = false
+    @Published var error: String?
+    @Published var selectedArticle: Article?
     @Published var showingArticleDetail = false
     @Published var searchText = ""
     @Published var selectedCategory = "All"
-    
-    private let newsDataManager = NewsDataManager()
-    
-    // MARK: - Computed Properties
-    var articles: [NewsArticle] {
-        newsDataManager.articles
+
+    private let service = PhishingNewsService.shared
+
+    init() {
+        loadArticles()
     }
-    
-    var isLoading: Bool {
-        newsDataManager.isLoading
+
+    // MARK: - Computed
+
+    var articles: [Article] {
+        digest?.articles ?? []
     }
-    
-    var error: String? {
-        newsDataManager.error
+
+    var digestSummary: String? {
+        digest?.summary
     }
-    
+
+    var digestDate: String? {
+        digest?.date
+    }
+
     var categories: [String] {
-        let allCategories = articles.map { $0.category }
-        return ["All"] + Array(Set(allCategories)).sorted()
+        let sources = articles.map { $0.source }
+        return ["All"] + Array(Set(sources)).sorted()
     }
-    
-    var filteredArticles: [NewsArticle] {
+
+    var filteredArticles: [Article] {
         var filtered = articles
-        
-        // Filter by category
         if selectedCategory != "All" {
-            filtered = filtered.filter { $0.category == selectedCategory }
+            filtered = filtered.filter { $0.source == selectedCategory }
         }
-        
-        // Filter by search text
         if !searchText.isEmpty {
             filtered = filtered.filter { article in
-                article.titleEn.localizedCaseInsensitiveContains(searchText) ||
-                article.titleNl.localizedCaseInsensitiveContains(searchText) ||
-                article.summaryEn.localizedCaseInsensitiveContains(searchText) ||
-                article.summaryNl.localizedCaseInsensitiveContains(searchText)
+                article.title.localizedCaseInsensitiveContains(searchText) ||
+                article.description.localizedCaseInsensitiveContains(searchText) ||
+                article.source.localizedCaseInsensitiveContains(searchText)
             }
         }
-        
-        // Sort by date (newest first)
-        return filtered.sorted { $0.date > $1.date }
+        return filtered.sorted { a, b in
+            (a.publishedDateObject ?? .distantPast) > (b.publishedDateObject ?? .distantPast)
+        }
     }
-    
-    // MARK: - Methods
-    func selectArticle(_ article: NewsArticle) {
+
+    // MARK: - Actions
+
+    func selectArticle(_ article: Article) {
         selectedArticle = article
         showingArticleDetail = true
     }
-    
+
     func refreshArticles() {
-        newsDataManager.loadArticles()
+        loadArticles()
     }
-    
+
     func clearSearch() {
         searchText = ""
     }
-    
+
     func selectCategory(_ category: String) {
         selectedCategory = category
+    }
+
+    /// Tries /today first; on 404 falls back to /latest so we show something instead of an error.
+    func loadArticles() {
+        isLoading = true
+        error = nil
+
+        Task { @MainActor in
+            do {
+                do {
+                    digest = try await service.fetchTodayDigest()
+                } catch PhishingNewsError.notFound {
+                    digest = try await service.fetchLatestDigest()
+                }
+            } catch {
+                digest = nil
+                self.error = error.localizedDescription
+            }
+            self.isLoading = false
+        }
     }
 }

@@ -58,6 +58,8 @@
 
 // MARK: - News
 "phishing_news" = "Phishing News";
+"todays_summary" = "Today's Summary";
+"read_full_article" = "Read Full Article";
 "search_news" = "Search news...";
 "clear_search" = "Clear search";
 "loading_news" = "Loading news...";

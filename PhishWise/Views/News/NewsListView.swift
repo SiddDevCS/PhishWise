@@ -8,26 +8,25 @@
 import SwiftUI
 
 // MARK: - News List View
-/// Displays a list of news articles with filtering and search
+/// Displays phishing news from the Fly API with digest summary, search, and source filter
 struct NewsListView: View {
     @ObservedObject var appViewModel: AppViewModel
     @StateObject private var newsViewModel = NewsViewModel()
     @State private var showingSearch = false
-    
+
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
                 // Search and Filter Bar
                 VStack(spacing: 12) {
-                    // Search Bar
                     HStack {
                         Image(systemName: "magnifyingglass")
                             .foregroundColor(.secondary)
-                        
+
                         TextField("search_news".localized, text: $newsViewModel.searchText)
                             .textFieldStyle(PlainTextFieldStyle())
                             .accessibilityLabel("search_news".localized)
-                        
+
                         if !newsViewModel.searchText.isEmpty {
                             Button(action: {
                                 newsViewModel.clearSearch()
@@ -42,8 +41,8 @@ struct NewsListView: View {
                     .background(Color(.systemGray6))
                     .cornerRadius(12)
                     .padding(.horizontal)
-                    
-                    // Category Filter
+
+                    // Source / Category Filter
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 12) {
                             ForEach(newsViewModel.categories, id: \.self) { category in
@@ -66,10 +65,9 @@ struct NewsListView: View {
                 }
                 .padding(.vertical, 8)
                 .background(Color(.systemBackground))
-                
+
                 // Content
                 if newsViewModel.isLoading {
-                    // Loading State
                     VStack(spacing: 20) {
                         ProgressView()
                             .scaleEffect(1.5)
@@ -79,7 +77,6 @@ struct NewsListView: View {
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else if let error = newsViewModel.error {
-                    // Error State
                     VStack(spacing: 20) {
                         Image(systemName: "exclamationmark.triangle.fill")
                             .font(.system(size: 50))
@@ -98,7 +95,6 @@ struct NewsListView: View {
                     .padding()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else if newsViewModel.filteredArticles.isEmpty {
-                    // Empty State
                     VStack(spacing: 20) {
                         Image(systemName: "newspaper")
                             .font(.system(size: 50))
@@ -112,13 +108,19 @@ struct NewsListView: View {
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
-                    // Articles List
                     ScrollView {
                         LazyVStack(spacing: 16) {
+                            // Digest summary card
+                            if let summary = newsViewModel.digestSummary {
+                                DigestSummaryCard(
+                                    summary: summary,
+                                    date: newsViewModel.digestDate
+                                )
+                            }
+
                             ForEach(newsViewModel.filteredArticles) { article in
-                                NewsArticleCard(
+                                ArticleCard(
                                     article: article,
-                                    language: appViewModel.currentLanguage,
                                     onTap: {
                                         newsViewModel.selectArticle(article)
                                     }
@@ -139,7 +141,6 @@ struct NewsListView: View {
             if let article = newsViewModel.selectedArticle {
                 NewsDetailView(
                     article: article,
-                    language: appViewModel.currentLanguage,
                     onDismiss: {
                         newsViewModel.showingArticleDetail = false
                     }
@@ -149,26 +150,49 @@ struct NewsListView: View {
     }
 }
 
-// MARK: - News Article Card
-struct NewsArticleCard: View {
-    let article: NewsArticle
-    let language: Language
+// MARK: - Digest Summary Card
+struct DigestSummaryCard: View {
+    let summary: String
+    let date: String?
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("todays_summary".localized)
+                .font(.headline)
+            if let date = date, !date.isEmpty {
+                Text(date)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            Text(summary)
+                .font(.body)
+                .foregroundColor(.secondary)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+        .background(Color(.systemGray6))
+        .cornerRadius(12)
+    }
+}
+
+// MARK: - Article Card (README: ArticleRow with Text(date, style: .relative))
+struct ArticleCard: View {
+    let article: Article
     let onTap: () -> Void
-    
+
     var body: some View {
         Button(action: onTap) {
             VStack(alignment: .leading, spacing: 12) {
-                // Header
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(article.title(for: language))
+                        Text(article.title)
                             .font(.headline)
                             .fontWeight(.semibold)
                             .multilineTextAlignment(.leading)
                             .foregroundColor(.primary)
                             .lineLimit(2)
-                        
-                        Text(article.category)
+
+                        Text(article.source)
                             .font(.caption)
                             .fontWeight(.medium)
                             .foregroundColor(.blue)
@@ -177,22 +201,27 @@ struct NewsArticleCard: View {
                             .background(Color.blue.opacity(0.1))
                             .cornerRadius(8)
                     }
-                    
+
                     Spacer()
-                    
+
                     VStack(alignment: .trailing, spacing: 4) {
-                        Text(article.formattedDate)
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                        
+                        if let date = article.publishedDateObject {
+                            Text(date, style: .relative)
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        } else {
+                            Text(article.publishedDate)
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+
                         Image(systemName: "chevron.right")
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
                 }
-                
-                // Summary
-                Text(article.summary(for: language))
+
+                Text(article.description)
                     .font(.body)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.leading)
@@ -204,7 +233,7 @@ struct NewsArticleCard: View {
             .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
         }
         .buttonStyle(PlainButtonStyle())
-        .accessibilityLabel("\(article.title(for: language)). \(article.summary(for: language))")
+        .accessibilityLabel("\(article.title). \(article.description)")
     }
 }
 

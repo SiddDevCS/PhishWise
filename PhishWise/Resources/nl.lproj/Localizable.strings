@@ -58,6 +58,8 @@
 
 // MARK: - News
 "phishing_news" = "Phishing Nieuws";
+"todays_summary" = "Samenvatting van vandaag";
+"read_full_article" = "Lees het volledige artikel";
 "search_news" = "Zoek nieuws...";
 "clear_search" = "Zoekopdracht wissen";
 "loading_news" = "Nieuws laden...";

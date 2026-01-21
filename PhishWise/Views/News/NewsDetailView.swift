@@ -8,22 +8,20 @@
 import SwiftUI
 
 // MARK: - News Detail View
-/// Displays the full content of a news article
+/// Displays a phishing article from the Fly API; opens the full article in Safari
 struct NewsDetailView: View {
-    let article: NewsArticle
-    let language: Language
+    let article: Article
     let onDismiss: () -> Void
     @Environment(\.dismiss) private var dismiss
-    
+
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     // Header
                     VStack(alignment: .leading, spacing: 12) {
-                        // Category and Date
                         HStack {
-                            Text(article.category)
+                            Text(article.source)
                                 .font(.caption)
                                 .fontWeight(.medium)
                                 .foregroundColor(.white)
@@ -31,16 +29,15 @@ struct NewsDetailView: View {
                                 .padding(.vertical, 6)
                                 .background(Color.blue)
                                 .cornerRadius(12)
-                            
+
                             Spacer()
-                            
+
                             Text(article.formattedDate)
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
-                        
-                        // Title
-                        Text(article.title(for: language))
+
+                        Text(article.title)
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .multilineTextAlignment(.leading)
@@ -48,24 +45,43 @@ struct NewsDetailView: View {
                             .accessibilityHeading(.h1)
                     }
                     .padding(.horizontal)
-                    
-                    // Content
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text(article.content(for: language))
-                            .font(.body)
-                            .multilineTextAlignment(.leading)
-                            .lineSpacing(4)
+
+                    // Description
+                    Text(article.description)
+                        .font(.body)
+                        .multilineTextAlignment(.leading)
+                        .lineSpacing(4)
+                        .padding(.horizontal)
+
+                    // Read Full Article
+                    if let url = URL(string: article.link) {
+                        Button(action: {
+                            UIApplication.shared.open(url)
+                        }) {
+                            HStack {
+                                Image(systemName: "safari")
+                                Text("read_full_article".localized)
+                                    .fontWeight(.semibold)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(12)
+                        }
+                        .padding(.horizontal)
+                        .accessibilityLabel("read_full_article".localized)
+                        .accessibilityHint("Opens the article in Safari")
                     }
-                    .padding(.horizontal)
-                    
+
                     // Footer
                     VStack(spacing: 12) {
                         Divider()
-                        
+
                         Text("stay_informed".localized)
                             .font(.headline)
                             .fontWeight(.semibold)
-                        
+
                         Text("phishing_awareness_tip".localized)
                             .font(.body)
                             .foregroundColor(.secondary)
@@ -75,7 +91,7 @@ struct NewsDetailView: View {
                     .background(Color.blue.opacity(0.1))
                     .cornerRadius(12)
                     .padding(.horizontal)
-                    
+
                     Spacer(minLength: 50)
                 }
             }
@@ -88,14 +104,14 @@ struct NewsDetailView: View {
                         onDismiss()
                     }
                 }
-                
+
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        // Share functionality could be added here
-                    }) {
-                        Image(systemName: "square.and.arrow.up")
+                    if let url = URL(string: article.link) {
+                        ShareLink(item: url) {
+                            Image(systemName: "square.and.arrow.up")
+                        }
+                        .accessibilityLabel("share_article".localized)
                     }
-                    .accessibilityLabel("share_article".localized)
                 }
             }
         }
@@ -104,21 +120,14 @@ struct NewsDetailView: View {
 
 // MARK: - Preview
 #Preview {
-    let sampleArticle = NewsArticle(
-        id: 1,
-        titleEn: "Sample Article",
-        titleNl: "Voorbeeld Artikel",
-        summaryEn: "This is a sample article summary",
-        summaryNl: "Dit is een voorbeeld artikel samenvatting",
-        contentEn: "This is the full content of the sample article.",
-        contentNl: "Dit is de volledige inhoud van het voorbeeld artikel.",
-        date: "2025-01-15",
-        category: "Sample"
-    )
-    
     NewsDetailView(
-        article: sampleArticle,
-        language: .english,
+        article: Article(
+            title: "Sample Phishing Campaign Targets Banks",
+            description: "Security researchers have identified a new phishing campaign targeting customers of major banks with sophisticated fake login pages.",
+            link: "https://example.com/article",
+            publishedDate: "2025-01-21T10:00:00Z",
+            source: "Security Blog"
+        ),
         onDismiss: {}
     )
 }
