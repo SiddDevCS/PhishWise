@@ -38,7 +38,7 @@ struct SettingsView: View {
                             .foregroundColor(.blue)
                         Text("app_version".localized)
                         Spacer()
-                        Text("1.0.0")
+                        Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0")
                             .foregroundColor(.secondary)
                     }
                     
@@ -50,19 +50,34 @@ struct SettingsView: View {
                         Text("English, Nederlands")
                             .foregroundColor(.secondary)
                     }
-                }
-                
-                // Testing Section (Temporary)
-                Section(header: Text("Testing (Temporary)")) {
-                    Button(action: {
-                        appViewModel.resetOnboarding()
-                    }) {
-                        HStack {
-                            Image(systemName: "arrow.counterclockwise")
-                                .foregroundColor(.orange)
-                            Text("Reset Onboarding")
-                                .foregroundColor(.orange)
-                            Spacer()
+                    
+                    // Privacy Policy Link
+                    if let privacyURL = URL(string: "https://phish-wise-web.vercel.app/privacy-policy") {
+                        Link(destination: privacyURL) {
+                            HStack {
+                                Image(systemName: "hand.raised.fill")
+                                    .foregroundColor(.blue)
+                                Text("privacy_policy".localized)
+                                Spacer()
+                                Image(systemName: "arrow.up.right.square")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                    }
+                    
+                    // Terms of Service Link
+                    if let termsURL = URL(string: "https://phish-wise-web.vercel.app/terms") {
+                        Link(destination: termsURL) {
+                            HStack {
+                                Image(systemName: "doc.text.fill")
+                                    .foregroundColor(.blue)
+                                Text("terms_of_service".localized)
+                                Spacer()
+                                Image(systemName: "arrow.up.right.square")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
                         }
                     }
                 }

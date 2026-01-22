@@ -17,16 +17,6 @@ struct PhishWiseApp: App {
             ContentView()
                 .environmentObject(appViewModel)
                 .environmentObject(localizationHelper)
-                .onAppear {
-                    // Configure accessibility settings
-                    configureAccessibility()
-                }
         }
-    }
-    
-    /// Configures accessibility settings for better user experience
-    private func configureAccessibility() {
-        // Enable accessibility features
-        UIAccessibility.post(notification: .announcement, argument: "PhishWise app launched")
     }
 }

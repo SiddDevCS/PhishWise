@@ -59,6 +59,14 @@
 // MARK: - News
 "phishing_news" = "Phishing Nieuws";
 "todays_summary" = "Samenvatting van vandaag";
+"todays_news" = "Nieuws van vandaag";
+"news_from_date" = "Nieuws van %@";
+"digest_being_prepared" = "Het digest van vandaag wordt voorbereid. Kom later terug.";
+"show_latest_news" = "Toon laatste nieuws";
+"showing_cached_from" = "Toont gecached nieuws van %@.";
+"may_be_outdated" = "Het kan verouderd zijn.";
+"today_not_ready_showing_latest" = "Het digest van vandaag is nog niet beschikbaar. Je bekijkt het laatste van %@.";
+"select_date" = "Selecteer datum";
 "read_full_article" = "Lees het volledige artikel";
 "search_news" = "Zoek nieuws...";
 "clear_search" = "Zoekopdracht wissen";
@@ -102,6 +110,8 @@
 "app_info" = "App Informatie";
 "app_version" = "App Versie";
 "supported_languages" = "Ondersteunde Talen";
+"privacy_policy" = "Privacybeleid";
+"terms_of_service" = "Servicevoorwaarden";
 "change_language" = "Taal Wijzigen";
 "change" = "Wijzigen";
 "cancel" = "Annuleren";

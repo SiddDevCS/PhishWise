@@ -37,7 +37,7 @@ struct NewsDetailView: View {
                                 .foregroundColor(.secondary)
                         }
 
-                        Text(article.title)
+                        Text(article.title.strippingHTML)
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .multilineTextAlignment(.leading)
@@ -47,7 +47,7 @@ struct NewsDetailView: View {
                     .padding(.horizontal)
 
                     // Description
-                    Text(article.description)
+                    Text(article.description.strippingHTML)
                         .font(.body)
                         .multilineTextAlignment(.leading)
                         .lineSpacing(4)

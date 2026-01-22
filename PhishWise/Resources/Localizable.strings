@@ -59,6 +59,14 @@
 // MARK: - News
 "phishing_news" = "Phishing News";
 "todays_summary" = "Today's Summary";
+"todays_news" = "Today's News";
+"news_from_date" = "News from %@";
+"digest_being_prepared" = "Today's digest is being prepared. Please check back later.";
+"show_latest_news" = "Show latest news";
+"showing_cached_from" = "Showing cached news from %@.";
+"may_be_outdated" = "It may be outdated.";
+"today_not_ready_showing_latest" = "Today's digest is not yet available. You're viewing the latest from %@.";
+"select_date" = "Select date";
 "read_full_article" = "Read Full Article";
 "search_news" = "Search news...";
 "clear_search" = "Clear search";
@@ -102,6 +110,8 @@
 "app_info" = "App Information";
 "app_version" = "App Version";
 "supported_languages" = "Supported Languages";
+"privacy_policy" = "Privacy Policy";
+"terms_of_service" = "Terms of Service";
 "change_language" = "Change Language";
 "change" = "Change";
 "cancel" = "Cancel";

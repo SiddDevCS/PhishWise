@@ -12,29 +12,24 @@ import Photos
 // MARK: - Logo Helper
 extension UIImage {
     static func loadAppLogo() -> UIImage? {
-        // Try to load from Assets (most common location)
-        if let logo = UIImage(named: "logo") {
-            return logo
-        }
-        // Try to load from bundle root
-        if let logoPath = Bundle.main.path(forResource: "logo", ofType: "png"),
-           let logo = UIImage(contentsOfFile: logoPath) {
-            return logo
-        }
-        // Try to load from images folder in bundle
+        // Try to load from images folder in bundle (primary location)
         if let logoURL = Bundle.main.url(forResource: "logo", withExtension: "png", subdirectory: "images"),
            let logoData = try? Data(contentsOf: logoURL),
            let logo = UIImage(data: logoData) {
             return logo
         }
-        // Try to load from main bundle with full path
-        if let bundlePath = Bundle.main.resourcePath,
-           let logo = UIImage(contentsOfFile: "\(bundlePath)/images/logo.png") {
+        // Fallback: try from bundle root
+        if let logoPath = Bundle.main.path(forResource: "logo", ofType: "png"),
+           let logo = UIImage(contentsOfFile: logoPath) {
             return logo
         }
-        // Try to load from project root (for development)
-        if let projectRoot = Bundle.main.resourcePath?.replacingOccurrences(of: "/PhishWise.app", with: ""),
-           let logo = UIImage(contentsOfFile: "\(projectRoot)/images/logo.png") {
+        // Fallback: try from Assets catalog
+        if let logo = UIImage(named: "logo") {
+            return logo
+        }
+        // Fallback: try direct path
+        if let bundlePath = Bundle.main.resourcePath,
+           let logo = UIImage(contentsOfFile: "\(bundlePath)/images/logo.png") {
             return logo
         }
         return nil
